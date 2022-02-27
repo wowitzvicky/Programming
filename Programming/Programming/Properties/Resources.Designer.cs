@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Programming1.Properties
+namespace Programming.Properties
 {
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.

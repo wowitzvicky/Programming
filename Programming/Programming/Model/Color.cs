@@ -1,4 +1,4 @@
-﻿namespace Programming1.Model
+﻿namespace Programming.Model
 {
     public enum Color
     {
