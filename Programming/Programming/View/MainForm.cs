@@ -7,10 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Programming.Model;
+using Programming.View.Model;
 using Color = System.Drawing.Color;
 
-namespace Programming
+namespace Programming.View
 {
     public partial class MainForm : Form
     {

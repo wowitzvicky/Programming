@@ -1,4 +1,4 @@
-﻿namespace Programming.Model
+﻿namespace Programming.View.Model
 {
     public enum SmartphoneManufacturers
     {

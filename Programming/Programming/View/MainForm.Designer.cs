@@ -1,4 +1,4 @@
-﻿namespace Programming
+﻿namespace Programming.View
 {
     partial class MainForm
     {
@@ -94,7 +94,7 @@
             // 
             this.GoButton.Location = new System.Drawing.Point(118, 40);
             this.GoButton.Name = "GoButton";
-            this.GoButton.Size = new System.Drawing.Size(73, 24);
+            this.GoButton.Size = new System.Drawing.Size(74, 25);
             this.GoButton.TabIndex = 13;
             this.GoButton.Text = "Go!";
             this.GoButton.UseVisualStyleBackColor = true;
@@ -146,9 +146,9 @@
             // 
             // ParseButton
             // 
-            this.ParseButton.Location = new System.Drawing.Point(175, 40);
+            this.ParseButton.Location = new System.Drawing.Point(174, 40);
             this.ParseButton.Name = "ParseButton";
-            this.ParseButton.Size = new System.Drawing.Size(75, 22);
+            this.ParseButton.Size = new System.Drawing.Size(75, 25);
             this.ParseButton.TabIndex = 9;
             this.ParseButton.Text = "Parse";
             this.ParseButton.UseVisualStyleBackColor = true;
