@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Programming.View.Model;
+using Programming.Model;
 using Color = System.Drawing.Color;
 
 namespace Programming.View
