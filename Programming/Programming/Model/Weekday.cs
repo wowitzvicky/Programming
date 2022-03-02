@@ -1,4 +1,4 @@
-﻿namespace Programming.View.Model
+﻿namespace Programming.Model
 {
     public enum Weekday
     {
