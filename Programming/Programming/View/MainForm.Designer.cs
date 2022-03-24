@@ -31,6 +31,16 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.TabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.FindButton = new System.Windows.Forms.Button();
+            this.ColorLabel = new System.Windows.Forms.Label();
+            this.ColorTextBox = new System.Windows.Forms.TextBox();
+            this.WidthLabel = new System.Windows.Forms.Label();
+            this.WidthTextBox = new System.Windows.Forms.TextBox();
+            this.LengthLabel = new System.Windows.Forms.Label();
+            this.LengthTextBox = new System.Windows.Forms.TextBox();
+            this.RectanglesListBox = new System.Windows.Forms.ListBox();
             this.TabPage1 = new System.Windows.Forms.TabPage();
             this.GroupBox3 = new System.Windows.Forms.GroupBox();
             this.GoButton = new System.Windows.Forms.Button();
@@ -49,6 +59,8 @@
             this.ValuesListBox = new System.Windows.Forms.ListBox();
             this.EnumsListBox = new System.Windows.Forms.ListBox();
             this.TabControl1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.TabPage1.SuspendLayout();
             this.GroupBox3.SuspendLayout();
             this.GroupBox2.SuspendLayout();
@@ -57,6 +69,7 @@
             // 
             // TabControl1
             // 
+            this.TabControl1.Controls.Add(this.tabPage2);
             this.TabControl1.Controls.Add(this.TabPage1);
             this.TabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TabControl1.Location = new System.Drawing.Point(0, 0);
@@ -64,6 +77,98 @@
             this.TabControl1.SelectedIndex = 0;
             this.TabControl1.Size = new System.Drawing.Size(654, 457);
             this.TabControl1.TabIndex = 0;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.groupBox4);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(646, 428);
+            this.tabPage2.TabIndex = 0;
+            this.tabPage2.Text = "Classes";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.FindButton);
+            this.groupBox4.Controls.Add(this.ColorLabel);
+            this.groupBox4.Controls.Add(this.ColorTextBox);
+            this.groupBox4.Controls.Add(this.WidthLabel);
+            this.groupBox4.Controls.Add(this.WidthTextBox);
+            this.groupBox4.Controls.Add(this.LengthLabel);
+            this.groupBox4.Controls.Add(this.LengthTextBox);
+            this.groupBox4.Controls.Add(this.RectanglesListBox);
+            this.groupBox4.Location = new System.Drawing.Point(8, 15);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(334, 259);
+            this.groupBox4.TabIndex = 8;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Rectangles";
+            // 
+            // FindButton
+            // 
+            this.FindButton.Location = new System.Drawing.Point(181, 224);
+            this.FindButton.Name = "FindButton";
+            this.FindButton.Size = new System.Drawing.Size(76, 25);
+            this.FindButton.TabIndex = 7;
+            this.FindButton.Text = "Find";
+            this.FindButton.UseVisualStyleBackColor = true;
+            // 
+            // ColorLabel
+            // 
+            this.ColorLabel.Location = new System.Drawing.Point(182, 116);
+            this.ColorLabel.Name = "ColorLabel";
+            this.ColorLabel.Size = new System.Drawing.Size(76, 20);
+            this.ColorLabel.TabIndex = 6;
+            this.ColorLabel.Text = "Color:";
+            // 
+            // ColorTextBox
+            // 
+            this.ColorTextBox.Location = new System.Drawing.Point(182, 139);
+            this.ColorTextBox.Name = "ColorTextBox";
+            this.ColorTextBox.Size = new System.Drawing.Size(76, 22);
+            this.ColorTextBox.TabIndex = 5;
+            // 
+            // WidthLabel
+            // 
+            this.WidthLabel.Location = new System.Drawing.Point(182, 68);
+            this.WidthLabel.Name = "WidthLabel";
+            this.WidthLabel.Size = new System.Drawing.Size(75, 20);
+            this.WidthLabel.TabIndex = 4;
+            this.WidthLabel.Text = "Width:";
+            // 
+            // WidthTextBox
+            // 
+            this.WidthTextBox.Location = new System.Drawing.Point(182, 91);
+            this.WidthTextBox.Name = "WidthTextBox";
+            this.WidthTextBox.Size = new System.Drawing.Size(75, 22);
+            this.WidthTextBox.TabIndex = 3;
+            // 
+            // LengthLabel
+            // 
+            this.LengthLabel.Location = new System.Drawing.Point(182, 21);
+            this.LengthLabel.Name = "LengthLabel";
+            this.LengthLabel.Size = new System.Drawing.Size(76, 19);
+            this.LengthLabel.TabIndex = 2;
+            this.LengthLabel.Text = "Length:";
+            // 
+            // LengthTextBox
+            // 
+            this.LengthTextBox.Location = new System.Drawing.Point(182, 43);
+            this.LengthTextBox.Name = "LengthTextBox";
+            this.LengthTextBox.Size = new System.Drawing.Size(75, 22);
+            this.LengthTextBox.TabIndex = 1;
+            // 
+            // RectanglesListBox
+            // 
+            this.RectanglesListBox.FormattingEnabled = true;
+            this.RectanglesListBox.ItemHeight = 16;
+            this.RectanglesListBox.Location = new System.Drawing.Point(6, 21);
+            this.RectanglesListBox.Name = "RectanglesListBox";
+            this.RectanglesListBox.Size = new System.Drawing.Size(170, 228);
+            this.RectanglesListBox.TabIndex = 0;
+            this.RectanglesListBox.SelectedIndexChanged += new System.EventHandler(this.RectanglesListBox_SelectedIndexChanged);
             // 
             // TabPage1
             // 
@@ -238,6 +343,9 @@
             this.Text = "Enumerations";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.TabControl1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.TabPage1.ResumeLayout(false);
             this.GroupBox3.ResumeLayout(false);
             this.GroupBox2.ResumeLayout(false);
@@ -246,6 +354,26 @@
             this.GroupBox1.PerformLayout();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.GroupBox groupBox4;
+
+        private System.Windows.Forms.Button FindButton;
+
+        private System.Windows.Forms.Label ColorLabel;
+
+        private System.Windows.Forms.TextBox ColorTextBox;
+
+        private System.Windows.Forms.Label WidthLabel;
+
+        private System.Windows.Forms.TextBox WidthTextBox;
+
+        private System.Windows.Forms.Label LengthLabel;
+
+        private System.Windows.Forms.TextBox LengthTextBox;
+
+        private System.Windows.Forms.ListBox RectanglesListBox;
+
+        private System.Windows.Forms.TabPage tabPage2;
 
         private System.Windows.Forms.Button GoButton;
         private System.Windows.Forms.GroupBox GroupBox3;

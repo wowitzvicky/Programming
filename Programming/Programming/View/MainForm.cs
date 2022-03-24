@@ -14,9 +14,20 @@ namespace Programming.View
 {
     public partial class MainForm : Form
     {
+        private Model.Classes.Rectangle _rectangle = new Model.Classes.Rectangle();
+        private Model.Classes.Rectangle _currentRectangle = new Model.Classes.Rectangle();
         public MainForm()
         {
             InitializeComponent();
+
+            var _rectangles = new Model.Classes.Rectangle[5];
+            Random random = new Random();
+            for (int i = 0; i < 5; i++)
+            {
+                _rectangles[i] = new Model.Classes.Rectangle(random.Next(1, 50), random.Next(1, 50), "White");
+                RectanglesListBox.Items.Add($"Rectangle {i + 1}");
+            }
+
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -99,6 +110,11 @@ namespace Programming.View
                     BackColor = Color.Chartreuse;
                     break;
             }
+        }
+
+        private void RectanglesListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }
