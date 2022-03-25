@@ -14,20 +14,27 @@ namespace Programming.View
 {
     public partial class MainForm : Form
     {
-        private Model.Classes.Rectangle _rectangle = new Model.Classes.Rectangle();
         private Model.Classes.Rectangle _currentRectangle = new Model.Classes.Rectangle();
+        private Model.Classes.Film _currentFilm = new Model.Classes.Film();
         public MainForm()
         {
             InitializeComponent();
 
-            var _rectangles = new Model.Classes.Rectangle[5];
+            Model.Classes.Rectangle[] _rectangles = new Model.Classes.Rectangle[5];
             Random random = new Random();
             for (int i = 0; i < 5; i++)
             {
-                _rectangles[i] = new Model.Classes.Rectangle(random.Next(1, 50), random.Next(1, 50), "White");
-                RectanglesListBox.Items.Add($"Rectangle {i + 1}");
+                _rectangles[i] = new Model.Classes.Rectangle(random.Next(1, 50), random.Next(1, 50), "White", i + 1);
+                RectanglesListBox.Items.Add(_rectangles[i]);
             }
 
+            Model.Classes.Film[] _films = new Model.Classes.Film[5];
+            for (int i = 0; i < 5; i++)
+            {
+                _films[i] = new Model.Classes.Film("The Great Gatsby", random.Next(1, 250), random.Next(1900, 2022), "Novel", random.Next(0, 10), i + 1);
+                FilmsListBox.Items.Add(_films[i]);
+            }
+            
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -114,7 +121,171 @@ namespace Programming.View
 
         private void RectanglesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            PrintTextBox();
+        }
+
+        private void LengthTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                _currentRectangle.Length = Double.Parse(LengthTextBox.Text);
+                LengthTextBox.BackColor = Color.White;
+            }
+            catch
+            {
+                LengthTextBox.BackColor = Color.LightPink;
+                return;
+            }
+        }
+
+
+        private void WidthTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                _currentRectangle.Width = Double.Parse(WidthTextBox.Text);
+                WidthTextBox.BackColor = Color.White;
+            }
+            catch
+            {
+                WidthTextBox.BackColor = Color.LightPink;
+                return;
+            }
+        }
+        
+        private void ColorTextBox_TextChanged(object sender, EventArgs e)
+        {
+            _currentRectangle.Color = ColorTextBox.Text;
+        }
+
+        private int FindRectangleWithMaxWidth()
+        {
+            double _max = 0;
+            int _currentIndex = 0;
+            for (int i = 0; i < 5; i++)
+            {
+                RectanglesListBox.SelectedIndex = i;
+                if (RectanglesListBox.SelectedItem is Model.Classes.Rectangle temp)
+                {
+                    if (temp.Width > _max)
+                    {
+                        _max = temp.Width;
+                        _currentIndex = i;
+                    }
+                }
+            }
+
+            return _currentIndex + 1;
+        }
+
+        private void FindButton_Click(object sender, EventArgs e)
+        {
+            RectanglesListBox.SelectedIndex = FindRectangleWithMaxWidth();
+        }
+
+        private void PrintTextBox()
+        {
+            if (RectanglesListBox.SelectedItem is Model.Classes.Rectangle temp)
+            {
+                _currentRectangle = temp;
+                LengthTextBox.Text = "" + _currentRectangle.Length;
+                WidthTextBox.Text = "" + _currentRectangle.Width;
+                ColorTextBox.Text = "" + _currentRectangle.Color;
+            }
+        }
+
+        private void PrintFilmsTextBox()
+        {
+            if (FilmsListBox.SelectedItem is Model.Classes.Film temp)
+            {
+                _currentFilm = temp;
+                TitleTextBox.Text = "" + _currentFilm.Name;
+                DurationTextBox.Text = "" + _currentFilm.Duration;
+                YearTextBox.Text = "" + _currentFilm.Year;
+                GenreTextBox.Text = "" + _currentFilm.Genre;
+                RatingTextBox.Text = "" + _currentFilm.Rating;
+            }
+        }
+
+        private void FilmsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PrintFilmsTextBox();
+        }
+        
+        private void TitleTextBox_TextChanged(object sender, EventArgs e)
+        {
+            _currentFilm.Name = TitleTextBox.Text;
+        }
+        
+        private void GenreTextBox_TextChanged(object sender, EventArgs e)
+        {
+            _currentFilm.Genre = GenreTextBox.Text;
+        }
+
+        private void DurationTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                _currentFilm.Duration = int.Parse(DurationTextBox.Text);
+                DurationTextBox.BackColor = Color.White;
+            }
+            catch
+            {
+                DurationTextBox.BackColor = Color.LightPink;
+                return;
+            }
+        }
+
+        private void YearTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                _currentFilm.Year = int.Parse(YearTextBox.Text);
+                YearTextBox.BackColor = Color.White;
+            }
+            catch
+            {
+                YearTextBox.BackColor = Color.LightPink;
+                return;
+            }
+        }
+
+        private void RatingTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                _currentFilm.Rating = Double.Parse(DurationTextBox.Text);
+                RatingTextBox.BackColor = Color.White;
+            }
+            catch
+            {
+                RatingTextBox.BackColor = Color.LightPink;
+                return;
+            }
+        }
+        private int FindFilmWithMaxRating()
+        {
+            double _max = 0;
+            int _currentRating = 0;
+            for (int i = 0; i < 5; i++)
+            {
+                FilmsListBox.SelectedIndex = i;
+                if (FilmsListBox.SelectedItem is Model.Classes.Film temp)
+                {
+                    if (temp.Rating > _max)
+                    {
+                        _max = temp.Rating;
+                        _currentRating = i;
+                    }
+                }
+            }
+
+            return _currentRating + 1;
+        }
+
+        private void FindFilmButton_Click(object sender, EventArgs e)
+        {
+            FilmsListBox.SelectedIndex = FindFilmWithMaxRating();
         }
     }
 }
