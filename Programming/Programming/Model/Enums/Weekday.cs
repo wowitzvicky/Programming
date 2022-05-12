@@ -1,5 +1,8 @@
 ﻿namespace Programming.Model
 {
+    /// <summary>
+    /// Хранит дни недели.
+    /// </summary>
     public enum Weekday
     {
         Monday,

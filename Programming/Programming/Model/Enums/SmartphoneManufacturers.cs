@@ -1,5 +1,8 @@
 ﻿namespace Programming.Model
 {
+    /// <summary>
+    /// Хранит производителей смартфонов.
+    /// </summary>
     public enum SmartphoneManufacturers
     {
         Apple,
