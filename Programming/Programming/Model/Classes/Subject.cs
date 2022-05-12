@@ -39,14 +39,14 @@ namespace Programming.Model.Classes
         }
 
         /// <summary>
-        /// Создаёт экземпляр класса <see cref="Subject"/>
+        /// Создаёт экземпляр класса <see cref="Subject"/>.
         /// </summary>
         public Subject()
         {
         }
 
         /// <summary>
-        /// Возвращает и задаёт экземпляр класса <see cref="Subject"/>
+        /// Возвращает и задаёт экземпляр класса <see cref="Subject"/>.
         /// </summary>
         /// <param name="name">Название дисциплины.</param>
         /// <param name="mark">Оценка по дисциплине. Отсчитывается от 1 до 5.</param>

@@ -40,14 +40,14 @@ namespace Programming.Model.Classes
         }
 
         /// <summary>
-        /// Создаёт экземпляр класса <see cref="Song"/>
+        /// Создаёт экземпляр класса <see cref="Song"/>.
         /// </summary>
         public Song()
         {
         }
 
         /// <summary>
-        /// Создаёт экземпляр класса <see cref="Song"/>
+        /// Создаёт экземпляр класса <see cref="Song"/>.
         /// </summary>
         /// <param name="name">Название песни.</param>
         /// <param name="author">Исполнитель.</param>

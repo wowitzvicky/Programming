@@ -11,12 +11,24 @@ using AppColor = Programming.Model.Classes.AppColor;
 
 namespace Programming.View.Panels
 {
+    /// <summary>
+    /// Рисует прямоугольники и проверяет их на пересечение.
+    /// </summary>
 	public partial class RectanglesCollisionControl : UserControl
 	{
+        /// <summary>
+        /// Хранит данные о текущем прямоугольнике.
+        /// </summary>
         private Rectangle _currentRectangle = new Rectangle();
         
+        /// <summary>
+        /// Список прямоугольников на рисунке.
+        /// </summary>
 		private List<Panel> _rectanglePanels = new List<Panel>();
 
+        /// <summary>
+        /// Список прямоугольников.
+        /// </summary>
         private List<Rectangle> _rectangles = new List<Rectangle>();
         
         public RectanglesCollisionControl()
@@ -44,6 +56,9 @@ namespace Programming.View.Panels
             AddRectangleButton.Image = Resources.rectangle_add_24x24_uncolor;
         }
        
+        /// <summary>
+        /// Находит пересечения прямоугольников.
+        /// </summary>
         private void FindCollisions()
         {
             if (_rectanglePanels.Count == 0)
@@ -80,6 +95,11 @@ namespace Programming.View.Panels
             }
         }
 
+        /// <summary>
+        /// Получает информацию о прямоугольнике.
+        /// </summary>
+        /// <param name="rectangle">Прямоугольник.</param>
+        /// <returns>Возвращает строку с информацией о прямоугольнике.</returns>
         private string GetRectangleInfo(Rectangle rectangle)
         {
             return $"{rectangle.Id}: " +
@@ -111,6 +131,9 @@ namespace Programming.View.Panels
            RectangleCoordinatesListBox.SelectedIndex = index;
         }
         
+        /// <summary>
+        /// Очищает информацию о прямоугольнике.
+        /// </summary>
         void ClearRectangleInfo()
         {
             RectangleIdTextBox.Text = "";
@@ -142,6 +165,10 @@ namespace Programming.View.Panels
             }
         }
         
+        /// <summary>
+        /// Обновляет информацию о прямоугольнике.
+        /// </summary>
+        /// <param name="rectangle">Прямоугольник.</param>
         private void UpdateRectangleInfo(Rectangle rectangle)
         {
             RectangleIdTextBox.Text = "" + rectangle.Id;

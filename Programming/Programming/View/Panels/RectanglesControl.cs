@@ -7,10 +7,19 @@ using AppColor = Programming.Model.Classes.AppColor;
 
 namespace Programming.View.Panels
 {
+    /// <summary>
+    /// Показывает информацию о прямоугольниках и находит прямоугольник с наибольшей шириной.
+    /// </summary>
 	public partial class RectanglesControl : UserControl
 	{
+        /// <summary>
+        /// Текущий прямоугольник.
+        /// </summary>
         private Rectangle _currentRectangle = new Rectangle();
         
+        /// <summary>
+        /// Список прямоугольников.
+        /// </summary>
 		private List<Rectangle> _rectangles = new List<Rectangle>();
         
 		public RectanglesControl()
@@ -63,7 +72,11 @@ namespace Programming.View.Panels
         {
             _currentRectangle.Color = ColorTextBox.Text;
         }
-        
+
+        /// <summary>
+        /// Находит прямоугольник с наибольшей шириной.
+        /// </summary>
+        /// <returns>Возвращает индекс прямоугольника с наибольшей шириной.</returns>
         private int FindRectangleWithMaxWidth()
         {
             double max = 0;
@@ -88,6 +101,9 @@ namespace Programming.View.Panels
             RectanglesListBox.SelectedIndex = FindRectangleWithMaxWidth();
         }
 
+        /// <summary>
+        /// Обновляет информацию о прямоугольнике.
+        /// </summary>
         private void PrintRectanglesTextBox()
         {
             if (RectanglesListBox.SelectedItem is Rectangle temp)
@@ -98,7 +114,10 @@ namespace Programming.View.Panels
                 ColorTextBox.Text = "" + _currentRectangle.Color;
             }
         }
-        
+
+        /// <summary>
+        /// Обновляет координаты прямоугольника.
+        /// </summary>
         private void PrintCoordinatesTextBox()
         {
             if (RectanglesListBox.SelectedItem is Rectangle temp)
@@ -109,6 +128,9 @@ namespace Programming.View.Panels
             }
         }
 
+        /// <summary>
+        /// Обновляет идентификатор прямоугольника.
+        /// </summary>
         private void PrintIdTextBox()
         {
             if (RectanglesListBox.SelectedItem is Rectangle temp)

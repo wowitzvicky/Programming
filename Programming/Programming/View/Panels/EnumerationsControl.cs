@@ -3,6 +3,9 @@ using System.Windows.Forms;
 
 namespace Programming.View.Panels
 {
+    /// <summary>
+    /// Показывает данные из перечислений.
+    /// </summary>
 	public partial class EnumerationsControl : UserControl
 	{
 		public EnumerationsControl()
@@ -11,6 +14,7 @@ namespace Programming.View.Panels
 			EnumsListBox.DataSource = Enum.GetValues(typeof(Enums));
 			EnumsListBox.SelectedIndex = 0;
 		}
+
         private void EnumsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             var item = (Enum)EnumsListBox.SelectedItem;

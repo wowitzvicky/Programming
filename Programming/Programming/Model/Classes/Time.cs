@@ -71,14 +71,14 @@ namespace Programming.Model.Classes
         }
 
         /// <summary>
-        /// Создаёт экземпляр класса <see cref="Time"/>
+        /// Создаёт экземпляр класса <see cref="Time"/>.
         /// </summary>
         public Time()
         {
         }
 
         /// <summary>
-        /// Создаёт экземпляр класса <see cref="Time"/>
+        /// Создаёт экземпляр класса <see cref="Time"/>.
         /// </summary>
         /// <param name="hours">Часы. Отсчитываются от 0 до 23.</param>
         /// <param name="minutes">Минуты. Отсчитываются от 0 до 60.</param>

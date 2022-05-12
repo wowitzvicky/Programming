@@ -98,17 +98,17 @@ namespace Programming.Model.Classes
         }
 
         /// <summary>
-        /// Создаёт экземпляр класса <see cref="Movie"/>
+        /// Создаёт экземпляр класса <see cref="Movie"/>.
         /// </summary>
         public Movie()
         {
         }
 
         /// <summary>
-        /// Создаёт экземпляр класса <see cref="Movie"/>
+        /// Создаёт экземпляр класса <see cref="Movie"/>.
         /// </summary>
         /// <param name="name">Название фильма.</param>
-        /// <param name="duration">Длительность фильма. Состоит только из положительнрых значений.</param>
+        /// <param name="duration">Длительность фильма. Состоит только из положительных значений.</param>
         /// <param name="year">Год выхода фильма. Отсчитывается с 1900 по текущий.</param>
         /// <param name="genre">Жанр фильма.</param>
         /// <param name="rating">Рейтинг фильма. Отсчитывается от 0 до 10.</param>

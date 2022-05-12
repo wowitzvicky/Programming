@@ -39,14 +39,14 @@ namespace Programming.Model.Classes
         }
 
         /// <summary>
-        /// Создаёт экзмепляр класса <see cref="Flight"/>
+        /// Создаёт экземпляр класса <see cref="Flight"/>.
         /// </summary>
         public Flight()
         {
         }
 
         /// <summary>
-        /// Создаёт экземпляр класса <see cref="Flight"/>
+        /// Создаёт экземпляр класса <see cref="Flight"/>.
         /// </summary>
         /// <param name="departure">Место вылета.</param>
         /// <param name="destination">Пункт назначения.</param>

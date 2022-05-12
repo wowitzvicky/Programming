@@ -5,10 +5,19 @@ using AppColor = Programming.Model.Classes.AppColor;
 
 namespace Programming.View.Panels
 {
+    /// <summary>
+    /// Показывает информацию о фильме и находит фильм с наивысшим рейтингом.
+    /// </summary>
 	public partial class MoviesControl : UserControl
 	{
+        /// <summary>
+        /// Хранит данные о текущем фильме.
+        /// </summary>
 		private Movie _currentMovie = new Movie();
 
+        /// <summary>
+        /// Создаёт случайные значения.
+        /// </summary>
         private Random _random = new Random();
         
 		public MoviesControl()
@@ -30,6 +39,9 @@ namespace Programming.View.Panels
             }
         }
 
+        /// <summary>
+        /// Обновляет информацию о фильме.
+        /// </summary>
         private void PrintMoviesTextBox()
         {
             if (MoviesListBox.SelectedItem is Movie temp)
@@ -41,6 +53,29 @@ namespace Programming.View.Panels
                 GenreTextBox.Text = "" + _currentMovie.Genre;
                 RatingTextBox.Text = "" + _currentMovie.Rating;
             }
+        }
+
+        /// <summary>
+        /// Находит фильм с наивысшим рейтингом.
+        /// </summary>
+        /// <returns>Возвращает индекс фильма с наивысшим рейтингом.</returns>
+        private int FindMovieWithMaxRating()
+        {
+            double max = 0;
+            int currentRating = 0;
+            for (int i = 0; i < 5; i++)
+            {
+                MoviesListBox.SelectedIndex = i;
+                if (MoviesListBox.SelectedItem is Movie temp)
+                {
+                    if (temp.Rating > max)
+                    {
+                        max = temp.Rating;
+                        currentRating = i;
+                    }
+                }
+            }
+            return currentRating;
         }
 
         private void MoviesListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -95,25 +130,6 @@ namespace Programming.View.Panels
             {
                 RatingTextBox.BackColor = AppColor.ErrorBackColor;
             }
-        }
-        
-        private int FindMovieWithMaxRating()
-        {
-            double max = 0;
-            int currentRating = 0;
-            for (int i = 0; i < 5; i++)
-            {
-                MoviesListBox.SelectedIndex = i;
-                if (MoviesListBox.SelectedItem is Movie temp)
-                {
-                    if (temp.Rating > max)
-                    {
-                        max = temp.Rating;
-                        currentRating = i;
-                    }
-                }
-            }
-            return currentRating;
         }
 
         private void FindMovieButton_Click(object sender, EventArgs e)

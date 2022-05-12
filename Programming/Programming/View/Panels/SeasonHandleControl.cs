@@ -5,6 +5,9 @@ using AppColor = Programming.Model.Classes.AppColor;
 
 namespace Programming.View.Panels
 {
+    /// <summary>
+    /// Совершает действия в зависимости от выбранного времени года.
+    /// </summary>
 	public partial class SeasonHandleControl : UserControl
 	{
 		public SeasonHandleControl()

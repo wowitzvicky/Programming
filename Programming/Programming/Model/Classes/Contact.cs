@@ -99,14 +99,14 @@ namespace Programming.Model.Classes
         }
 
         /// <summary>
-        /// Создаёт экземпляр класса <see cref="Contact"/>
+        /// Создаёт экземпляр класса <see cref="Contact"/>.
         /// </summary>
         public Contact()
         {
         }
 
         /// <summary>
-        /// Создаёт экземпляр класса <see cref="Contact"/>
+        /// Создаёт экземпляр класса <see cref="Contact"/>.
         /// </summary>
         /// <param name="name">Имя. Должно состоять только из букв.</param>
         /// <param name="surname">Фамилия. Должна состоять только из букв.</param>

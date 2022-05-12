@@ -1,5 +1,8 @@
 ﻿namespace Programming.View
 {
+    /// <summary>
+    /// Хранит другие перечисления.
+    /// </summary>
     public enum Enums
     {
         Color,

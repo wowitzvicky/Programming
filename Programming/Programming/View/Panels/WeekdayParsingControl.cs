@@ -3,12 +3,16 @@ using System.Windows.Forms;
 using Programming.Model;
 namespace Programming.View.Panels
 {
+    /// <summary>
+    /// Проверяет существует ли написанный день недели.
+    /// </summary>
 	public partial class WeekdayParsingControl : UserControl
 	{
 		public WeekdayParsingControl()
 		{
 			InitializeComponent();
 		}
+
         private void ParseButton_Click(object sender, EventArgs e)
         {
             Weekday value;
