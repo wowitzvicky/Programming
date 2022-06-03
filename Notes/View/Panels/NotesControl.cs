@@ -23,14 +23,29 @@ namespace Notes.View.Panels
 			NoteCategoryComboBox.Items.Add(Category.Finance);
 		}
 
+		/// <summary>
+		/// Хранит данные о текущей заметке.
+		/// </summary>
 		private Note _currentNote = new Note();
 
+		/// <summary>
+		/// Список заметок.
+		/// </summary>
 		private List<Note> _notes = new List<Note>();
 
+		/// <summary>
+		/// Строковый вывод информации о заметке.
+		/// </summary>
+		/// <param name="note">Экземпляр класса <see cref="Note"</param>
+		/// <returns>Возвращает строковое представление о заметке.</returns>
 		private string GetNoteInfo(Note note)
 		{
 			return $"{note.Name} ";
 		}
+
+		/// <summary>
+		/// Сортирует список заметок.
+		/// </summary>
 		private void SortNotes()
 		{
 			Note temp;
@@ -47,6 +62,9 @@ namespace Notes.View.Panels
 				}
 			}
 		}
+		/// <summary>
+		/// Выводит список заметок.
+		/// </summary>
 		private void PrintNotesList()
 		{
 			NotesListBox.Items.Clear();
@@ -57,6 +75,10 @@ namespace Notes.View.Panels
 			}
 		}
 
+		/// <summary>
+		/// Обновляет информацию о выбранной заметке.
+		/// </summary>
+		/// <param name="note">Заметка.</param>
 		private void UpdateNoteInfo(Note note)
 		{
 			NameOfNoteTextBox.Text = "" + note.Name;
@@ -65,6 +87,9 @@ namespace Notes.View.Panels
 			NoteCategoryComboBox.Text = note._category;
 		}
 
+		/// <summary>
+		/// Очищает вывод информации о заметке.
+		/// </summary>
 		private void ClearNoteInfo()
 		{
 			NameOfNoteTextBox.Text = "";
@@ -72,6 +97,7 @@ namespace Notes.View.Panels
 			DateLabel.Text = "";
 			NoteCategoryComboBox.Text = "";
 		}
+
 		private void AddNoteButton_Click(object sender, EventArgs e)
 		{
 			int index = _notes.Count;
