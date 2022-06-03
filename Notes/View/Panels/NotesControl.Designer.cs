@@ -29,8 +29,6 @@ namespace Notes.View.Panels
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.DeleteNoteButton = new System.Windows.Forms.Button();
-			this.AddNoteButton = new System.Windows.Forms.Button();
 			this.NoteInfoGroupBox = new System.Windows.Forms.GroupBox();
 			this.DateLabel = new System.Windows.Forms.Label();
 			this.TextOfNoteLabel = new System.Windows.Forms.Label();
@@ -42,28 +40,10 @@ namespace Notes.View.Panels
 			this.NotesLabel = new System.Windows.Forms.Label();
 			this.NotesListBox = new System.Windows.Forms.ListBox();
 			this.ChangePushButton = new System.Windows.Forms.Button();
+			this.DeleteNoteButton = new System.Windows.Forms.Button();
+			this.AddNoteButton = new System.Windows.Forms.Button();
 			this.NoteInfoGroupBox.SuspendLayout();
 			this.SuspendLayout();
-			// 
-			// DeleteNoteButton
-			// 
-			this.DeleteNoteButton.Location = new System.Drawing.Point(122, 448);
-			this.DeleteNoteButton.Name = "DeleteNoteButton";
-			this.DeleteNoteButton.Size = new System.Drawing.Size(91, 23);
-			this.DeleteNoteButton.TabIndex = 9;
-			this.DeleteNoteButton.Text = "-";
-			this.DeleteNoteButton.UseVisualStyleBackColor = true;
-			this.DeleteNoteButton.Click += new System.EventHandler(this.DeleteNoteButton_Click);
-			// 
-			// AddNoteButton
-			// 
-			this.AddNoteButton.Location = new System.Drawing.Point(12, 448);
-			this.AddNoteButton.Name = "AddNoteButton";
-			this.AddNoteButton.Size = new System.Drawing.Size(91, 23);
-			this.AddNoteButton.TabIndex = 8;
-			this.AddNoteButton.Text = "+";
-			this.AddNoteButton.UseVisualStyleBackColor = true;
-			this.AddNoteButton.Click += new System.EventHandler(this.AddNoteButton_Click);
 			// 
 			// NoteInfoGroupBox
 			// 
@@ -100,7 +80,7 @@ namespace Notes.View.Panels
 			// 
 			// TextOfNoteRichTextBox
 			// 
-			this.TextOfNoteRichTextBox.Location = new System.Drawing.Point(11, 109);
+			this.TextOfNoteRichTextBox.Location = new System.Drawing.Point(6, 115);
 			this.TextOfNoteRichTextBox.Name = "TextOfNoteRichTextBox";
 			this.TextOfNoteRichTextBox.Size = new System.Drawing.Size(325, 292);
 			this.TextOfNoteRichTextBox.TabIndex = 4;
@@ -159,19 +139,52 @@ namespace Notes.View.Panels
 			// 
 			// ChangePushButton
 			// 
-			this.ChangePushButton.Location = new System.Drawing.Point(12, 477);
+			this.ChangePushButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.ChangePushButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+			this.ChangePushButton.Image = global::Notes.Properties.Resources.Note_Change_Uncolor;
+			this.ChangePushButton.Location = new System.Drawing.Point(175, 442);
 			this.ChangePushButton.Name = "ChangePushButton";
-			this.ChangePushButton.Size = new System.Drawing.Size(201, 23);
+			this.ChangePushButton.Size = new System.Drawing.Size(38, 35);
 			this.ChangePushButton.TabIndex = 10;
-			this.ChangePushButton.Text = "Редактировать";
 			this.ChangePushButton.UseVisualStyleBackColor = true;
 			this.ChangePushButton.Click += new System.EventHandler(this.ChangePushButton_Click);
+			this.ChangePushButton.MouseLeave += new System.EventHandler(this.ChangePushButton_MouseLeave);
+			this.ChangePushButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ChangePushButton_MouseMove);
+			// 
+			// DeleteNoteButton
+			// 
+			this.DeleteNoteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.DeleteNoteButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+			this.DeleteNoteButton.Image = global::Notes.Properties.Resources.Note_Remove_Uncolor;
+			this.DeleteNoteButton.Location = new System.Drawing.Point(131, 442);
+			this.DeleteNoteButton.Name = "DeleteNoteButton";
+			this.DeleteNoteButton.Size = new System.Drawing.Size(38, 35);
+			this.DeleteNoteButton.TabIndex = 9;
+			this.DeleteNoteButton.UseVisualStyleBackColor = true;
+			this.DeleteNoteButton.Click += new System.EventHandler(this.DeleteNoteButton_Click);
+			this.DeleteNoteButton.MouseLeave += new System.EventHandler(this.DeleteNoteButton_MouseLeave);
+			this.DeleteNoteButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DeleteNoteButton_MouseMove);
+			// 
+			// AddNoteButton
+			// 
+			this.AddNoteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.AddNoteButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+			this.AddNoteButton.Image = global::Notes.Properties.Resources.Note_Add_Uncolor_;
+			this.AddNoteButton.Location = new System.Drawing.Point(93, 442);
+			this.AddNoteButton.Name = "AddNoteButton";
+			this.AddNoteButton.Size = new System.Drawing.Size(32, 35);
+			this.AddNoteButton.TabIndex = 8;
+			this.AddNoteButton.UseVisualStyleBackColor = true;
+			this.AddNoteButton.Click += new System.EventHandler(this.AddNoteButton_Click);
+			this.AddNoteButton.MouseLeave += new System.EventHandler(this.AddNoteButton_MouseLeave);
+			this.AddNoteButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.AddNoteButton_MouseMove);
 			// 
 			// NotesControl
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoSize = true;
+			this.BackColor = System.Drawing.SystemColors.ControlLightLight;
 			this.Controls.Add(this.ChangePushButton);
 			this.Controls.Add(this.DeleteNoteButton);
 			this.Controls.Add(this.AddNoteButton);

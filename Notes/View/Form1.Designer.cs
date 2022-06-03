@@ -29,6 +29,7 @@ namespace Notes
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.notesControl1 = new Notes.View.Panels.NotesControl();
 			this.SuspendLayout();
 			// 
@@ -47,6 +48,7 @@ namespace Notes
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(615, 521);
 			this.Controls.Add(this.notesControl1);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MinimumSize = new System.Drawing.Size(631, 560);
 			this.Name = "MainForm";
 			this.Text = "Заметки";

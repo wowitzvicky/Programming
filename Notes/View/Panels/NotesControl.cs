@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Notes.Model;
 using Note = Notes.Model.Classes.Note;
-
+using Notes.Resources;
 namespace Notes.View.Panels
 {
 	public partial class NotesControl : UserControl
@@ -117,6 +117,41 @@ namespace Notes.View.Panels
 				UpdateNoteInfo(_currentNote);
 				PrintNotesList();
 			}
+		}
+
+		private void AddNoteButton_MouseMove(object sender, MouseEventArgs e)
+		{
+			AddNoteButton.Image = Resource.Note_Add_Color24x24;
+		}
+
+		private void AddNoteButton_MouseLeave(object sender, EventArgs e)
+		{
+			AddNoteButton.Image = Resource.Note_Add_Uncolor;
+		}
+
+		private void ChangePushButton_MouseDown(object sender, MouseEventArgs e)
+		{
+			ChangePushButton.Image = Resource.Note_Change_Color;
+		}
+
+		private void ChangePushButton_MouseLeave(object sender, EventArgs e)
+		{
+			ChangePushButton.Image = Resource.Note_Change_Uncolor;
+		}
+
+		private void DeleteNoteButton_MouseMove(object sender, MouseEventArgs e)
+		{
+			DeleteNoteButton.Image = Resource.Note_Remove_Color;
+		}
+
+		private void DeleteNoteButton_MouseLeave(object sender, EventArgs e)
+		{
+			DeleteNoteButton.Image = Resource.Note_Remove_Uncolor;
+		}
+
+		private void ChangePushButton_MouseMove(object sender, MouseEventArgs e)
+		{
+			ChangePushButton.Image = Resource.Note_Change_Color;
 		}
 	}
 }
