@@ -128,11 +128,12 @@ namespace Notes.Model.Classes
 		/// <param name="id">Уникальный номер.</param>
 		/// <param name="name">Название. Должно быть меньше 100 символов.</param>
 		/// <param name="text">Текст.</param>
-		public Note(int id,string name, string text)
+		public Note(int id,string name, string text, string category)
 		{
 			Id = id;
 			_name = name;
 			_text = text;
+			_category = category;
 			_addTime = DateTime.Now;
 		}
 

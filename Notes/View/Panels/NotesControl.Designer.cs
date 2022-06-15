@@ -32,24 +32,23 @@ namespace Notes.View.Panels
 			this.NoteInfoGroupBox = new System.Windows.Forms.GroupBox();
 			this.DateLabel = new System.Windows.Forms.Label();
 			this.TextOfNoteLabel = new System.Windows.Forms.Label();
-			this.TextOfNoteRichTextBox = new System.Windows.Forms.RichTextBox();
 			this.NoteCategoryComboBox = new System.Windows.Forms.ComboBox();
 			this.NameOfNoteTextBox = new System.Windows.Forms.TextBox();
 			this.NoteCategoryLabel = new System.Windows.Forms.Label();
 			this.NameOfNoteLabel = new System.Windows.Forms.Label();
 			this.NotesLabel = new System.Windows.Forms.Label();
 			this.NotesListBox = new System.Windows.Forms.ListBox();
-			this.ChangePushButton = new System.Windows.Forms.Button();
 			this.DeleteNoteButton = new System.Windows.Forms.Button();
 			this.AddNoteButton = new System.Windows.Forms.Button();
+			this.TextOfNoteRichTextBox = new System.Windows.Forms.TextBox();
 			this.NoteInfoGroupBox.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// NoteInfoGroupBox
 			// 
+			this.NoteInfoGroupBox.Controls.Add(this.TextOfNoteRichTextBox);
 			this.NoteInfoGroupBox.Controls.Add(this.DateLabel);
 			this.NoteInfoGroupBox.Controls.Add(this.TextOfNoteLabel);
-			this.NoteInfoGroupBox.Controls.Add(this.TextOfNoteRichTextBox);
 			this.NoteInfoGroupBox.Controls.Add(this.NoteCategoryComboBox);
 			this.NoteInfoGroupBox.Controls.Add(this.NameOfNoteTextBox);
 			this.NoteInfoGroupBox.Controls.Add(this.NoteCategoryLabel);
@@ -78,14 +77,6 @@ namespace Notes.View.Panels
 			this.TextOfNoteLabel.TabIndex = 5;
 			this.TextOfNoteLabel.Text = "Заметка";
 			// 
-			// TextOfNoteRichTextBox
-			// 
-			this.TextOfNoteRichTextBox.Location = new System.Drawing.Point(6, 115);
-			this.TextOfNoteRichTextBox.Name = "TextOfNoteRichTextBox";
-			this.TextOfNoteRichTextBox.Size = new System.Drawing.Size(325, 292);
-			this.TextOfNoteRichTextBox.TabIndex = 4;
-			this.TextOfNoteRichTextBox.Text = "";
-			// 
 			// NoteCategoryComboBox
 			// 
 			this.NoteCategoryComboBox.FormattingEnabled = true;
@@ -93,6 +84,7 @@ namespace Notes.View.Panels
 			this.NoteCategoryComboBox.Name = "NoteCategoryComboBox";
 			this.NoteCategoryComboBox.Size = new System.Drawing.Size(121, 21);
 			this.NoteCategoryComboBox.TabIndex = 3;
+			this.NoteCategoryComboBox.SelectedValueChanged += new System.EventHandler(this.NoteCategoryComboBox_SelectedValueChanged);
 			// 
 			// NameOfNoteTextBox
 			// 
@@ -100,6 +92,7 @@ namespace Notes.View.Panels
 			this.NameOfNoteTextBox.Name = "NameOfNoteTextBox";
 			this.NameOfNoteTextBox.Size = new System.Drawing.Size(219, 20);
 			this.NameOfNoteTextBox.TabIndex = 2;
+			this.NameOfNoteTextBox.TextChanged += new System.EventHandler(this.NameOfNoteTextBox_TextChanged);
 			// 
 			// NoteCategoryLabel
 			// 
@@ -136,27 +129,14 @@ namespace Notes.View.Panels
 			this.NotesListBox.Size = new System.Drawing.Size(201, 407);
 			this.NotesListBox.TabIndex = 5;
 			this.NotesListBox.SelectedIndexChanged += new System.EventHandler(this.NotesListBox_SelectedIndexChanged);
-			// 
-			// ChangePushButton
-			// 
-			this.ChangePushButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.ChangePushButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-			this.ChangePushButton.Image = global::Notes.Properties.Resources.Note_Change_Uncolor;
-			this.ChangePushButton.Location = new System.Drawing.Point(175, 442);
-			this.ChangePushButton.Name = "ChangePushButton";
-			this.ChangePushButton.Size = new System.Drawing.Size(38, 35);
-			this.ChangePushButton.TabIndex = 10;
-			this.ChangePushButton.UseVisualStyleBackColor = true;
-			this.ChangePushButton.Click += new System.EventHandler(this.ChangePushButton_Click);
-			this.ChangePushButton.MouseLeave += new System.EventHandler(this.ChangePushButton_MouseLeave);
-			this.ChangePushButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ChangePushButton_MouseMove);
+			this.NotesListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.NotesListBox_MouseDoubleClick);
 			// 
 			// DeleteNoteButton
 			// 
 			this.DeleteNoteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.DeleteNoteButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
 			this.DeleteNoteButton.Image = global::Notes.Properties.Resources.Note_Remove_Uncolor;
-			this.DeleteNoteButton.Location = new System.Drawing.Point(131, 442);
+			this.DeleteNoteButton.Location = new System.Drawing.Point(175, 442);
 			this.DeleteNoteButton.Name = "DeleteNoteButton";
 			this.DeleteNoteButton.Size = new System.Drawing.Size(38, 35);
 			this.DeleteNoteButton.TabIndex = 9;
@@ -170,7 +150,7 @@ namespace Notes.View.Panels
 			this.AddNoteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.AddNoteButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
 			this.AddNoteButton.Image = global::Notes.Properties.Resources.Note_Add_Uncolor_;
-			this.AddNoteButton.Location = new System.Drawing.Point(93, 442);
+			this.AddNoteButton.Location = new System.Drawing.Point(149, 442);
 			this.AddNoteButton.Name = "AddNoteButton";
 			this.AddNoteButton.Size = new System.Drawing.Size(32, 35);
 			this.AddNoteButton.TabIndex = 8;
@@ -179,13 +159,22 @@ namespace Notes.View.Panels
 			this.AddNoteButton.MouseLeave += new System.EventHandler(this.AddNoteButton_MouseLeave);
 			this.AddNoteButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.AddNoteButton_MouseMove);
 			// 
+			// TextOfNoteRichTextBox
+			// 
+			this.TextOfNoteRichTextBox.Location = new System.Drawing.Point(11, 109);
+			this.TextOfNoteRichTextBox.Multiline = true;
+			this.TextOfNoteRichTextBox.Name = "TextOfNoteRichTextBox";
+			this.TextOfNoteRichTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+			this.TextOfNoteRichTextBox.Size = new System.Drawing.Size(325, 335);
+			this.TextOfNoteRichTextBox.TabIndex = 7;
+			this.TextOfNoteRichTextBox.TextChanged += new System.EventHandler(this.TextOfNoteRichTextBox_TextChanged);
+			// 
 			// NotesControl
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoSize = true;
 			this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-			this.Controls.Add(this.ChangePushButton);
 			this.Controls.Add(this.DeleteNoteButton);
 			this.Controls.Add(this.AddNoteButton);
 			this.Controls.Add(this.NoteInfoGroupBox);
@@ -208,13 +197,12 @@ namespace Notes.View.Panels
 		private System.Windows.Forms.GroupBox NoteInfoGroupBox;
 		private System.Windows.Forms.Label DateLabel;
 		private System.Windows.Forms.Label TextOfNoteLabel;
-		private System.Windows.Forms.RichTextBox TextOfNoteRichTextBox;
 		private System.Windows.Forms.ComboBox NoteCategoryComboBox;
 		private System.Windows.Forms.TextBox NameOfNoteTextBox;
 		private System.Windows.Forms.Label NoteCategoryLabel;
 		private System.Windows.Forms.Label NameOfNoteLabel;
 		private System.Windows.Forms.Label NotesLabel;
 		private System.Windows.Forms.ListBox NotesListBox;
-		private System.Windows.Forms.Button ChangePushButton;
+		private System.Windows.Forms.TextBox TextOfNoteRichTextBox;
 	}
 }
