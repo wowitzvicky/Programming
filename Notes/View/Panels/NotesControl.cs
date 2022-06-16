@@ -6,24 +6,37 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 using Notes.Model;
 using Note = Notes.Model.Classes.Note;
 using Notes.Resources;
+using Save = Notes.Model.Classes.ProjectSerializer;
 namespace Notes.View.Panels
 {
 	public partial class NotesControl : UserControl
 	{
 		private static bool to_change = false;
 
-
+		Save save = new Save();
+		
 		public NotesControl()
 		{
 			InitializeComponent();
+			var appDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+			save.Filename = appDataFolder + "/Nepsha/NoteApp/";
+			if (!Directory.Exists(save.Filename))
+			{
+				Directory.CreateDirectory(save.Filename);
+			}
+			save.Filename = appDataFolder + "/Nepsha/NoteApp/save.json";
+			_notes = save.LoadFromFile();
+			PrintNotesList();
 			NoteCategoryComboBox.Items.Add(Category.Home);
 			NoteCategoryComboBox.Items.Add(Category.Job);
 			NoteCategoryComboBox.Items.Add(Category.Sport);
 			NoteCategoryComboBox.Items.Add(Category.Finance);
+			
 			
 		}
 		/*
@@ -76,6 +89,8 @@ namespace Notes.View.Panels
 		/// </summary>
 		private void PrintNotesList()
 		{
+			if (_notes.Count!=0)
+			{
 			NotesListBox.Items.Clear();
 
 			SortNotes();
@@ -85,6 +100,7 @@ namespace Notes.View.Panels
 				NotesListBox.Items.Add(GetNoteInfo(_notes[i]));
 			}
 			NotesListBox.SelectedIndex = 0;
+			}
 		}
 
 		/// <summary>
@@ -132,6 +148,7 @@ namespace Notes.View.Panels
 			PrintNotesList();
 			ClearNoteInfo();
 			NotesListBox.SelectedIndex = -1;
+			save.SaveToFile(_notes);
 		}
 
 		private void TurnOnChanges()
