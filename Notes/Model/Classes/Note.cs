@@ -10,7 +10,7 @@ namespace Notes.Model.Classes
 		/// <summary>
 		/// Количество уже созданных когда-либо заметок.
 		/// </summary>
-		public static int _allNotesCount=0;
+		public static int AllNotesCount=0;
 
 		/// <summary>
 		/// Уникальный Id - номер заметки.
@@ -40,19 +40,7 @@ namespace Notes.Model.Classes
 		/// <summary>
 		/// Возвращает либо увеличивает кол-во уже созданных заметок.
 		/// </summary>
-		public static int AllNotesCount
-		{
-			get
-			{
-				return _allNotesCount;
-
-			}
-			private set
-			{
-				_allNotesCount = value;
-			}
-		}
-
+		
 		/// <summary>
 		/// Возвращает или задает название заметки.
 		/// </summary>
@@ -102,10 +90,7 @@ namespace Notes.Model.Classes
 		/// <summary>
 		/// Создает пустой экземпляр класса <see cref="Note"/>
 		/// </summary>
-		public Note()
-		{
-
-		}
+		public Note(){}
 
 		/// <summary>
 		/// Создает экземпляр класса <see cref="Note"/>
@@ -122,6 +107,7 @@ namespace Notes.Model.Classes
 			_category = category;
 			_addTime = DateTime.Now;
 		}
+
 		/// <summary>
 		/// Создает экземпляр класса <see cref="Note"/>
 		/// </summary>
