@@ -1,5 +1,5 @@
 ﻿
-namespace Notes.Model
+namespace Notes.Model.Enums
 {
 	/// <summary>
 	/// Хранит категории.
