@@ -23,6 +23,5 @@ namespace Notes.Model.Classes
 				throw new ArgumentException("Название должно входить в допустимый диапазон");
 			}
 		}
-
 	}
 }

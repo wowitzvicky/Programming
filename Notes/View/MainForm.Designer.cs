@@ -24,8 +24,8 @@ namespace Notes
 		#region Код, автоматически созданный конструктором форм Windows
 
 		/// <summary>
-		/// Требуемый метод для поддержки конструктора — не изменяйте 
-		/// содержимое этого метода с помощью редактора кода.
+		/// Required method for Designer support - do not modify
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
@@ -35,31 +35,34 @@ namespace Notes
 			// 
 			// notesControl1
 			// 
+			this.notesControl1.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
 			this.notesControl1.AutoSize = true;
-			this.notesControl1.Location = new System.Drawing.Point(12, 3);
-			this.notesControl1.MinimumSize = new System.Drawing.Size(603, 510);
+			this.notesControl1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+			this.notesControl1.Location = new System.Drawing.Point(16, 4);
+			this.notesControl1.Margin = new System.Windows.Forms.Padding(5);
+			this.notesControl1.MinimumSize = new System.Drawing.Size(804, 628);
 			this.notesControl1.Name = "notesControl1";
-			this.notesControl1.Size = new System.Drawing.Size(603, 510);
+			this.notesControl1.Size = new System.Drawing.Size(804, 628);
 			this.notesControl1.TabIndex = 0;
 			// 
 			// MainForm
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(615, 521);
+			this.ClientSize = new System.Drawing.Size(820, 641);
 			this.Controls.Add(this.notesControl1);
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.MinimumSize = new System.Drawing.Size(631, 560);
+			this.Icon = ((System.Drawing.Icon) (resources.GetObject("$this.Icon")));
+			this.Margin = new System.Windows.Forms.Padding(4);
+			this.MinimumSize = new System.Drawing.Size(835, 678);
 			this.Name = "MainForm";
 			this.Text = "Заметки";
 			this.ResumeLayout(false);
 			this.PerformLayout();
-
 		}
 
 		#endregion
 
-		private View.Panels.NotesControl notesControl1;
+		private Notes.View.Panels.NotesControl notesControl1;
 	}
 }
 

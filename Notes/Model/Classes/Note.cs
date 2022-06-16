@@ -10,7 +10,7 @@ namespace Notes.Model.Classes
 		/// <summary>
 		/// Количество уже созданных когда-либо заметок.
 		/// </summary>
-		public static int AllNotesCount=0;
+		public static int AllNotesCount = 0;
 
 		/// <summary>
 		/// Уникальный Id - номер заметки.
@@ -20,22 +20,23 @@ namespace Notes.Model.Classes
 		/// <summary>
 		/// Название заметки.
 		/// </summary>
-		public string _name { get; set; }
+		public string NoteName { get; set; }
 
 		/// <summary>
 		/// Текст заметки.
 		/// </summary>
-		public string _text { get; set; }
+		public string NoteText { get; set; }
 
 		/// <summary>
 		/// Категория заметки.
 		/// </summary>
-		public string _category { get; set; }
+		public string NoteCategory { get; set; }
+		
 		
 		/// <summary>
 		/// Дата создания заметки.
 		/// </summary>
-		readonly public DateTime  _addTime;
+		readonly public DateTime  AddTime;
 
 		/// <summary>
 		/// Возвращает либо увеличивает кол-во уже созданных заметок.
@@ -59,12 +60,12 @@ namespace Notes.Model.Classes
 		{
 			get
 			{
-				return _name;
+				return NoteName;
 			}
 			private set
 			{
-				Validator.AssertValueInRange(_name);
-				_name = value;
+				Validator.AssertValueInRange(NoteName);
+				NoteName = value;
 			}
 		}
 
@@ -75,11 +76,11 @@ namespace Notes.Model.Classes
 		{
 			get
 			{
-				return _text;
+				return NoteText;
 			}
 			private set
 			{
-				_text = value;
+				NoteText = value;
 			}
 		}
 
@@ -90,11 +91,11 @@ namespace Notes.Model.Classes
 		{
 			get
 			{
-				return _category;
+				return NoteCategory;
 			}
 			private set
 			{
-				_text = value;
+				NoteText = value;
 			}
 		}
 
@@ -113,10 +114,10 @@ namespace Notes.Model.Classes
 		{
 			AllNotesCount++;
 			Id = AllNotesCount;
-			_name = name;
-			_text = text;
-			_category = category;
-			_addTime = DateTime.Now;
+			NoteName = name;
+			NoteText = text;
+			NoteCategory = category;
+			AddTime = DateTime.Now;
 		}
 
 		/// <summary>
@@ -128,10 +129,10 @@ namespace Notes.Model.Classes
 		public Note(int id,string name, string text, string category)
 		{
 			Id = id;
-			_name = name;
-			_text = text;
-			_category = category;
-			_addTime = DateTime.Now;
+			NoteName = name;
+			NoteText = text;
+			NoteCategory = category;
+			AddTime = DateTime.Now;
 		}
 
 

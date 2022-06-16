@@ -13,6 +13,7 @@ using Note = Notes.Model.Classes.Note;
 using Notes.Resources;
 using Notes.Model.Enums;
 using Notes.Model.Classes;
+
 namespace Notes.View.Panels
 {
 	public partial class NotesControl : UserControl
@@ -20,18 +21,20 @@ namespace Notes.View.Panels
 		private static bool to_change = false;
 
 		ProjectSerializer Serializer = new ProjectSerializer();
-		
+
 		public NotesControl()
 		{
 			InitializeComponent();
-			Properties.Settings.Default.DPath=Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "/Nepsha/NoteApp/";
+			Properties.Settings.Default.DPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) +
+			                                    "/Nepsha/NoteApp/";
 			Properties.Settings.Default.Save();
 			Serializer.Filename = Properties.Settings.Default.DPath;
 			if (!Directory.Exists(Serializer.Filename))
 			{
 				Directory.CreateDirectory(Serializer.Filename);
 			}
-			Serializer.Filename+="save.json";
+
+			Serializer.Filename += "save.json";
 			_notes = Serializer.LoadFromFile();
 			PrintNotesList();
 			NoteCategoryComboBox.DataSource = Enum.GetValues(typeof(Category));
@@ -54,7 +57,7 @@ namespace Notes.View.Panels
 		/// <returns>Возвращает строковое представление о заметке.</returns>
 		private string GetNoteInfo(Note note)
 		{
-			return $"{note.Name} ";
+			return $"{note.Name}";
 		}
 
 		/// <summary>
@@ -67,7 +70,7 @@ namespace Notes.View.Panels
 			{
 				for (int j = 0; j < _notes.Count - 1; j++)
 				{
-					if (_notes[j]._addTime < _notes[j + 1]._addTime)
+					if (_notes[j].AddTime < _notes[j + 1].AddTime)
 					{
 						temp = _notes[j];
 						_notes[j] = _notes[j + 1];
@@ -76,12 +79,13 @@ namespace Notes.View.Panels
 				}
 			}
 		}
+
 		/// <summary>
 		/// Выводит список заметок.
 		/// </summary>
 		private void PrintNotesList()
 		{
-			if (_notes.Count!=0)
+			if (_notes.Count != 0)
 			{
 				NotesListBox.Items.Clear();
 				SortNotes();
@@ -89,6 +93,7 @@ namespace Notes.View.Panels
 				{
 					NotesListBox.Items.Add(GetNoteInfo(_notes[i]));
 				}
+
 				NotesListBox.SelectedIndex = 0;
 				Serializer.SaveToFile(_notes);
 			}
@@ -102,8 +107,8 @@ namespace Notes.View.Panels
 		{
 			NameOfNoteTextBox.Text = "" + note.Name;
 			TextOfNoteRichTextBox.Text = "" + note.Text;
-			DateLabel.Text = "Время создания : " + note._addTime;
-			NoteCategoryComboBox.Text = note._category;
+			DateLabel.Text = "Время создания: " + note.AddTime;
+			NoteCategoryComboBox.Text = note.NoteCategory;
 		}
 
 		/// <summary>
@@ -125,11 +130,13 @@ namespace Notes.View.Panels
 			{
 
 			}
+
 			string name = NameOfNoteTextBox.Text;
 			if (name == "")
 			{
 				name = "Без названия";
 			}
+
 			Note note = new Note(name, TextOfNoteRichTextBox.Text, NoteCategoryComboBox.Text);
 			_currentNote = note;
 			_notes.Add(_currentNote);
@@ -213,7 +220,6 @@ namespace Notes.View.Panels
 					PrintNotesList();
 				}
 			}
-
 		}
 
 		private void NoteCategoryComboBox_SelectedValueChanged(object sender, EventArgs e)
@@ -233,7 +239,6 @@ namespace Notes.View.Panels
 					_notes[index] = _currentNote;
 					UpdateNoteInfo(_currentNote);
 					PrintNotesList();
-
 				}
 			}
 		}
@@ -262,7 +267,6 @@ namespace Notes.View.Panels
 		private void NotesListBox_MouseDoubleClick(object sender, MouseEventArgs e)
 		{
 			NotesListBox.SelectedIndex = -1;
-			ClearNoteInfo();
 		}
 	}
 }
