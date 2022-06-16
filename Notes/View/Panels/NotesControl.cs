@@ -6,27 +6,49 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 using Notes.Model;
 using Note = Notes.Model.Classes.Note;
 using Notes.Resources;
+using Save = Notes.Model.Classes.ProjectSerializer;
 namespace Notes.View.Panels
 {
 	public partial class NotesControl : UserControl
 	{
+		private static bool to_change = false;
+
+		Save save = new Save();
+		
 		public NotesControl()
 		{
 			InitializeComponent();
+			var appDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+			save.Filename = appDataFolder + "/Nepsha/NoteApp/";
+			if (!Directory.Exists(save.Filename))
+			{
+				Directory.CreateDirectory(save.Filename);
+			}
+			save.Filename = appDataFolder + "/Nepsha/NoteApp/save.json";
+			_notes = save.LoadFromFile();
+			PrintNotesList();
 			NoteCategoryComboBox.Items.Add(Category.Home);
 			NoteCategoryComboBox.Items.Add(Category.Job);
 			NoteCategoryComboBox.Items.Add(Category.Sport);
 			NoteCategoryComboBox.Items.Add(Category.Finance);
+			
+			
 		}
-
+		/*
+         this.NoteCategoryComboBox.SelectedValueChanged += new System.EventHandler(this.NoteCategoryComboBox_SelectedValueChanged);
+         this.NameOfNoteTextBox.TextChanged += new System.EventHandler(this.NameOfNoteTextBox_TextChanged);
+         this.NotesListBox.SelectedIndexChanged += new System.EventHandler(this.NotesListBox_SelectedIndexChanged);
+         */
 		/// <summary>
 		/// Хранит данные о текущей заметке.
 		/// </summary>
 		private Note _currentNote = new Note();
+
 
 		/// <summary>
 		/// Список заметок.
@@ -67,11 +89,17 @@ namespace Notes.View.Panels
 		/// </summary>
 		private void PrintNotesList()
 		{
+			if (_notes.Count!=0)
+			{
 			NotesListBox.Items.Clear();
+
 			SortNotes();
+
 			for (int i = 0; i < _notes.Count; i++)
 			{
 				NotesListBox.Items.Add(GetNoteInfo(_notes[i]));
+			}
+			NotesListBox.SelectedIndex = 0;
 			}
 		}
 
@@ -79,6 +107,9 @@ namespace Notes.View.Panels
 		/// Обновляет информацию о выбранной заметке.
 		/// </summary>
 		/// <param name="note">Заметка.</param>
+
+
+
 		private void UpdateNoteInfo(Note note)
 		{
 			NameOfNoteTextBox.Text = "" + note.Name;
@@ -106,18 +137,44 @@ namespace Notes.View.Panels
 			{
 
 			}
-			Note note = new Note(NameOfNoteTextBox.Text, TextOfNoteRichTextBox.Text,NoteCategoryComboBox.Text);
+			string name = NameOfNoteTextBox.Text;
+			if (name == "")
+			{
+				name = "Без названия";
+			}
+			Note note = new Note(name, TextOfNoteRichTextBox.Text, NoteCategoryComboBox.Text);
 			_currentNote = note;
 			_notes.Add(_currentNote);
 			PrintNotesList();
 			ClearNoteInfo();
+			NotesListBox.SelectedIndex = -1;
+			save.SaveToFile(_notes);
+		}
+
+		private void TurnOnChanges()
+		{
+			this.TextOfNoteRichTextBox.TextChanged += this.TextOfNoteRichTextBox_TextChanged;
+			this.NoteCategoryComboBox.SelectedValueChanged += this.NoteCategoryComboBox_SelectedValueChanged;
+			this.NameOfNoteTextBox.TextChanged += this.NameOfNoteTextBox_TextChanged;
+			//this.NotesListBox.SelectedIndexChanged += this.NotesListBox_SelectedIndexChanged;
+		}
+
+		private void TurnOffChanges()
+		{
+			this.TextOfNoteRichTextBox.TextChanged -= this.TextOfNoteRichTextBox_TextChanged;
+			this.NoteCategoryComboBox.SelectedValueChanged -= this.NoteCategoryComboBox_SelectedValueChanged;
+			this.NameOfNoteTextBox.TextChanged -= this.NameOfNoteTextBox_TextChanged;
+			//this.NotesListBox.SelectedIndexChanged -= this.NotesListBox_SelectedIndexChanged;
 		}
 
 		private void NotesListBox_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			//Console.WriteLine(NameOfNoteTextBox.Text);
 			if (NotesListBox.SelectedIndex != -1)
 			{
+				TurnOffChanges();
 				UpdateNoteInfo(_notes[NotesListBox.SelectedIndex]);
+				TurnOnChanges();
 			}
 		}
 
@@ -132,18 +189,7 @@ namespace Notes.View.Panels
 			}
 		}
 
-		private void ChangePushButton_Click(object sender, EventArgs e)
-		{
-			if (NotesListBox.SelectedIndex != -1)
-			{
-				int id = _notes[NotesListBox.SelectedIndex].Id;
-				Note note = new Note(id,NameOfNoteTextBox.Text, TextOfNoteRichTextBox.Text);
-				_currentNote = note;
-				_notes[NotesListBox.SelectedIndex] = _currentNote;
-				UpdateNoteInfo(_currentNote);
-				PrintNotesList();
-			}
-		}
+	
 
 		private void AddNoteButton_MouseMove(object sender, MouseEventArgs e)
 		{
@@ -153,16 +199,6 @@ namespace Notes.View.Panels
 		private void AddNoteButton_MouseLeave(object sender, EventArgs e)
 		{
 			AddNoteButton.Image = Resource.Note_Add_Uncolor;
-		}
-
-		private void ChangePushButton_MouseDown(object sender, MouseEventArgs e)
-		{
-			ChangePushButton.Image = Resource.Note_Change_Color;
-		}
-
-		private void ChangePushButton_MouseLeave(object sender, EventArgs e)
-		{
-			ChangePushButton.Image = Resource.Note_Change_Uncolor;
 		}
 
 		private void DeleteNoteButton_MouseMove(object sender, MouseEventArgs e)
@@ -175,9 +211,79 @@ namespace Notes.View.Panels
 			DeleteNoteButton.Image = Resource.Note_Remove_Uncolor;
 		}
 
-		private void ChangePushButton_MouseMove(object sender, MouseEventArgs e)
+		private void NameOfNoteTextBox_TextChanged(object sender, EventArgs e)
 		{
-			ChangePushButton.Image = Resource.Note_Change_Color;
+			int index = NotesListBox.SelectedIndex;
+			if (index == -1)
+			{
+
+			}
+			else if (NameOfNoteTextBox.Text != "")
+			{
+				if (_notes[index].Text != NameOfNoteTextBox.Text)
+				{
+					int id = _notes[NotesListBox.SelectedIndex].Id;
+					Note note = new Note(id, NameOfNoteTextBox.Text, _notes[index].Text, _notes[index].Category);
+					_currentNote = note;
+					_notes[index] = _currentNote;
+					UpdateNoteInfo(_currentNote);
+					PrintNotesList();
+				}
+			}
+		}
+
+		private void NoteCategoryComboBox_SelectedValueChanged(object sender, EventArgs e)
+		{
+			int index = NotesListBox.SelectedIndex;
+			if (index == -1)
+			{
+
+			}
+			else if (NoteCategoryComboBox.Text != "")
+			{
+				if (_notes[index].Category != NoteCategoryComboBox.Text)
+				{
+					int id = _notes[NotesListBox.SelectedIndex].Id;
+					Note note = new Note(id, _notes[index].Name, _notes[index].Text, NoteCategoryComboBox.Text);
+					_currentNote = note;
+					_notes[index] = _currentNote;
+					UpdateNoteInfo(_currentNote);
+					PrintNotesList();
+
+				}
+			}
+		}
+
+		private void TextOfNoteRichTextBox_TextChanged(object sender, EventArgs e)
+		{
+			int index = NotesListBox.SelectedIndex;
+			if (index == -1)
+			{
+
+			}
+			else if (TextOfNoteRichTextBox.Text != "")
+			{
+				if (_notes[index].Category != TextOfNoteRichTextBox.Text)
+				{
+					int id = _notes[NotesListBox.SelectedIndex].Id;
+					Note note = new Note(id, _notes[index].Name, TextOfNoteRichTextBox.Text, _notes[index].Category);
+					_currentNote = note;
+					_notes[index] = _currentNote;
+					UpdateNoteInfo(_currentNote);
+					PrintNotesList();
+				}
+			}
+		}
+
+		private void NotesListBox_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void NotesListBox_MouseDoubleClick(object sender, MouseEventArgs e)
+		{
+			NotesListBox.SelectedIndex = -1;
+			ClearNoteInfo();
 		}
 	}
 }
