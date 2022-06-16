@@ -15,17 +15,12 @@ namespace Notes.Model.Classes
 
 		public void SaveToFile(List<Note> note)
 		{
-
-
 			JsonSerializer serializer = new JsonSerializer();
 			using (StreamWriter sw = new StreamWriter(Filename))
 			using (JsonWriter writer = new JsonTextWriter(sw))
 			{
-				
 				serializer.Serialize(writer, note);
 			}
-
-
 		}
 		public List<Note> LoadFromFile()
 		{
@@ -36,7 +31,6 @@ namespace Notes.Model.Classes
 			using (StreamReader sr = new StreamReader(Filename))
 			using (JsonReader reader = new JsonTextReader(sr))
 			{
-				
 				var test = serializer.Deserialize<JArray>(reader);
 				note = test.ToObject<List<Note>>();
 			}

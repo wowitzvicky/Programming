@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Notes.Model;
 using Note = Notes.Model.Classes.Note;
 using Notes.Resources;
+using Notes.Model.Enums;
 using Notes.Model.Classes;
 namespace Notes.View.Panels
 {
@@ -49,7 +50,7 @@ namespace Notes.View.Panels
 		/// <summary>
 		/// Строковый вывод информации о заметке.
 		/// </summary>
-		/// <param name="note">Экземпляр класса <see cref="Note"</param>
+		/// <param name="note">Экземпляр класса <see cref="Note"></see></param>
 		/// <returns>Возвращает строковое представление о заметке.</returns>
 		private string GetNoteInfo(Note note)
 		{

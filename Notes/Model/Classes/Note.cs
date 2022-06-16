@@ -39,8 +39,19 @@ namespace Notes.Model.Classes
 
 		/// <summary>
 		/// Возвращает либо увеличивает кол-во уже созданных заметок.
-		/// </summary>
-		
+	    // </summary>
+		public static int NotesCount
+		{
+			get
+			{
+				return AllNotesCount;
+			}
+			private set
+			{
+				AllNotesCount = value;
+			}
+		}
+
 		/// <summary>
 		/// Возвращает или задает название заметки.
 		/// </summary>
