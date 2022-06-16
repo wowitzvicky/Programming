@@ -1,7 +1,4 @@
-﻿
-using System.Windows.Forms;
-
-
+﻿using System.Windows.Forms;
 
 namespace Notes
 {
@@ -11,6 +8,5 @@ namespace Notes
 		{
 			InitializeComponent();
 		}
-		
 	}
 }
