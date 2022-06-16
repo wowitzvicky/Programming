@@ -30,6 +30,7 @@ namespace Notes.View.Panels
 		private void InitializeComponent()
 		{
 			this.NoteInfoGroupBox = new System.Windows.Forms.GroupBox();
+			this.TextOfNoteRichTextBox = new System.Windows.Forms.TextBox();
 			this.DateLabel = new System.Windows.Forms.Label();
 			this.TextOfNoteLabel = new System.Windows.Forms.Label();
 			this.NoteCategoryComboBox = new System.Windows.Forms.ComboBox();
@@ -40,7 +41,6 @@ namespace Notes.View.Panels
 			this.NotesListBox = new System.Windows.Forms.ListBox();
 			this.DeleteNoteButton = new System.Windows.Forms.Button();
 			this.AddNoteButton = new System.Windows.Forms.Button();
-			this.TextOfNoteRichTextBox = new System.Windows.Forms.TextBox();
 			this.NoteInfoGroupBox.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -59,6 +59,16 @@ namespace Notes.View.Panels
 			this.NoteInfoGroupBox.TabIndex = 7;
 			this.NoteInfoGroupBox.TabStop = false;
 			this.NoteInfoGroupBox.Text = "Информация о заметке";
+			// 
+			// TextOfNoteRichTextBox
+			// 
+			this.TextOfNoteRichTextBox.Location = new System.Drawing.Point(11, 109);
+			this.TextOfNoteRichTextBox.Multiline = true;
+			this.TextOfNoteRichTextBox.Name = "TextOfNoteRichTextBox";
+			this.TextOfNoteRichTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.TextOfNoteRichTextBox.Size = new System.Drawing.Size(325, 335);
+			this.TextOfNoteRichTextBox.TabIndex = 7;
+			this.TextOfNoteRichTextBox.TextChanged += new System.EventHandler(this.TextOfNoteRichTextBox_TextChanged);
 			// 
 			// DateLabel
 			// 
@@ -158,16 +168,6 @@ namespace Notes.View.Panels
 			this.AddNoteButton.Click += new System.EventHandler(this.AddNoteButton_Click);
 			this.AddNoteButton.MouseLeave += new System.EventHandler(this.AddNoteButton_MouseLeave);
 			this.AddNoteButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.AddNoteButton_MouseMove);
-			// 
-			// TextOfNoteRichTextBox
-			// 
-			this.TextOfNoteRichTextBox.Location = new System.Drawing.Point(11, 109);
-			this.TextOfNoteRichTextBox.Multiline = true;
-			this.TextOfNoteRichTextBox.Name = "TextOfNoteRichTextBox";
-			this.TextOfNoteRichTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-			this.TextOfNoteRichTextBox.Size = new System.Drawing.Size(325, 335);
-			this.TextOfNoteRichTextBox.TabIndex = 7;
-			this.TextOfNoteRichTextBox.TextChanged += new System.EventHandler(this.TextOfNoteRichTextBox_TextChanged);
 			// 
 			// NotesControl
 			// 

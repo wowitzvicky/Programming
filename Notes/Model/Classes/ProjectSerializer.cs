@@ -42,10 +42,6 @@ namespace Notes.Model.Classes
 			}
 			}
 			return note;
-
-
 		}
-
-
 	}
 }

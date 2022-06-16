@@ -11,44 +11,35 @@ using System.Windows.Forms;
 using Notes.Model;
 using Note = Notes.Model.Classes.Note;
 using Notes.Resources;
-using Save = Notes.Model.Classes.ProjectSerializer;
+using Notes.Model.Classes;
 namespace Notes.View.Panels
 {
 	public partial class NotesControl : UserControl
 	{
 		private static bool to_change = false;
 
-		Save save = new Save();
+		ProjectSerializer Serializer = new ProjectSerializer();
 		
 		public NotesControl()
 		{
 			InitializeComponent();
-			var appDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-			save.Filename = appDataFolder + "/Nepsha/NoteApp/";
-			if (!Directory.Exists(save.Filename))
+			Properties.Settings.Default.DPath=Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "/Nepsha/NoteApp/";
+			Properties.Settings.Default.Save();
+			Serializer.Filename = Properties.Settings.Default.DPath;
+			if (!Directory.Exists(Serializer.Filename))
 			{
-				Directory.CreateDirectory(save.Filename);
+				Directory.CreateDirectory(Serializer.Filename);
 			}
-			save.Filename = appDataFolder + "/Nepsha/NoteApp/save.json";
-			_notes = save.LoadFromFile();
+			Serializer.Filename+="save.json";
+			_notes = Serializer.LoadFromFile();
 			PrintNotesList();
-			NoteCategoryComboBox.Items.Add(Category.Home);
-			NoteCategoryComboBox.Items.Add(Category.Job);
-			NoteCategoryComboBox.Items.Add(Category.Sport);
-			NoteCategoryComboBox.Items.Add(Category.Finance);
-			
-			
+			NoteCategoryComboBox.DataSource = Enum.GetValues(typeof(Category));
 		}
-		/*
-         this.NoteCategoryComboBox.SelectedValueChanged += new System.EventHandler(this.NoteCategoryComboBox_SelectedValueChanged);
-         this.NameOfNoteTextBox.TextChanged += new System.EventHandler(this.NameOfNoteTextBox_TextChanged);
-         this.NotesListBox.SelectedIndexChanged += new System.EventHandler(this.NotesListBox_SelectedIndexChanged);
-         */
+
 		/// <summary>
 		/// Хранит данные о текущей заметке.
 		/// </summary>
 		private Note _currentNote = new Note();
-
 
 		/// <summary>
 		/// Список заметок.
@@ -91,15 +82,14 @@ namespace Notes.View.Panels
 		{
 			if (_notes.Count!=0)
 			{
-			NotesListBox.Items.Clear();
-
-			SortNotes();
-
-			for (int i = 0; i < _notes.Count; i++)
-			{
-				NotesListBox.Items.Add(GetNoteInfo(_notes[i]));
-			}
-			NotesListBox.SelectedIndex = 0;
+				NotesListBox.Items.Clear();
+				SortNotes();
+				for (int i = 0; i < _notes.Count; i++)
+				{
+					NotesListBox.Items.Add(GetNoteInfo(_notes[i]));
+				}
+				NotesListBox.SelectedIndex = 0;
+				Serializer.SaveToFile(_notes);
 			}
 		}
 
@@ -107,9 +97,6 @@ namespace Notes.View.Panels
 		/// Обновляет информацию о выбранной заметке.
 		/// </summary>
 		/// <param name="note">Заметка.</param>
-
-
-
 		private void UpdateNoteInfo(Note note)
 		{
 			NameOfNoteTextBox.Text = "" + note.Name;
@@ -148,7 +135,6 @@ namespace Notes.View.Panels
 			PrintNotesList();
 			ClearNoteInfo();
 			NotesListBox.SelectedIndex = -1;
-			save.SaveToFile(_notes);
 		}
 
 		private void TurnOnChanges()
@@ -156,7 +142,6 @@ namespace Notes.View.Panels
 			this.TextOfNoteRichTextBox.TextChanged += this.TextOfNoteRichTextBox_TextChanged;
 			this.NoteCategoryComboBox.SelectedValueChanged += this.NoteCategoryComboBox_SelectedValueChanged;
 			this.NameOfNoteTextBox.TextChanged += this.NameOfNoteTextBox_TextChanged;
-			//this.NotesListBox.SelectedIndexChanged += this.NotesListBox_SelectedIndexChanged;
 		}
 
 		private void TurnOffChanges()
@@ -164,12 +149,10 @@ namespace Notes.View.Panels
 			this.TextOfNoteRichTextBox.TextChanged -= this.TextOfNoteRichTextBox_TextChanged;
 			this.NoteCategoryComboBox.SelectedValueChanged -= this.NoteCategoryComboBox_SelectedValueChanged;
 			this.NameOfNoteTextBox.TextChanged -= this.NameOfNoteTextBox_TextChanged;
-			//this.NotesListBox.SelectedIndexChanged -= this.NotesListBox_SelectedIndexChanged;
 		}
 
 		private void NotesListBox_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			//Console.WriteLine(NameOfNoteTextBox.Text);
 			if (NotesListBox.SelectedIndex != -1)
 			{
 				TurnOffChanges();
@@ -185,11 +168,10 @@ namespace Notes.View.Panels
 				int i = NotesListBox.SelectedIndex;
 				_notes.RemoveAt(i);
 				NotesListBox.Items.RemoveAt(i);
+				Serializer.SaveToFile(_notes);
 				ClearNoteInfo();
 			}
 		}
-
-	
 
 		private void AddNoteButton_MouseMove(object sender, MouseEventArgs e)
 		{
@@ -216,7 +198,7 @@ namespace Notes.View.Panels
 			int index = NotesListBox.SelectedIndex;
 			if (index == -1)
 			{
-
+				return;
 			}
 			else if (NameOfNoteTextBox.Text != "")
 			{
@@ -230,6 +212,7 @@ namespace Notes.View.Panels
 					PrintNotesList();
 				}
 			}
+
 		}
 
 		private void NoteCategoryComboBox_SelectedValueChanged(object sender, EventArgs e)
@@ -237,7 +220,7 @@ namespace Notes.View.Panels
 			int index = NotesListBox.SelectedIndex;
 			if (index == -1)
 			{
-
+				return;
 			}
 			else if (NoteCategoryComboBox.Text != "")
 			{
@@ -259,7 +242,7 @@ namespace Notes.View.Panels
 			int index = NotesListBox.SelectedIndex;
 			if (index == -1)
 			{
-
+				return;
 			}
 			else if (TextOfNoteRichTextBox.Text != "")
 			{
@@ -273,11 +256,6 @@ namespace Notes.View.Panels
 					PrintNotesList();
 				}
 			}
-		}
-
-		private void NotesListBox_Click(object sender, EventArgs e)
-		{
-
 		}
 
 		private void NotesListBox_MouseDoubleClick(object sender, MouseEventArgs e)
