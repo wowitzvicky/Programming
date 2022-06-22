@@ -24,14 +24,7 @@ namespace Notes.View.Panels
 		public NotesControl()
 		{
 			InitializeComponent();
-			Properties.Settings.Default.DPath=Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "/Nepsha/NoteApp/";
-			Properties.Settings.Default.Save();
-			Serializer.Filename = Properties.Settings.Default.DPath;
-			if (!Directory.Exists(Serializer.Filename))
-			{
-				Directory.CreateDirectory(Serializer.Filename);
-			}
-			Serializer.Filename+="save.json";
+			Serializer.Init();
 			_notes = Serializer.LoadFromFile();
 			PrintNotesList();
 			NoteCategoryComboBox.DataSource = Enum.GetValues(typeof(Category));
@@ -103,7 +96,7 @@ namespace Notes.View.Panels
 			NameOfNoteTextBox.Text = "" + note.Name;
 			TextOfNoteRichTextBox.Text = "" + note.Text;
 			DateLabel.Text = "Время создания : " + note._addTime;
-			NoteCategoryComboBox.Text = note._category;
+			NoteCategoryComboBox.Text = note.Category;
 		}
 
 		/// <summary>

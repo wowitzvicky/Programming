@@ -46,6 +46,9 @@ namespace Notes.View.Panels
 			// 
 			// NoteInfoGroupBox
 			// 
+			this.NoteInfoGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.NoteInfoGroupBox.Controls.Add(this.TextOfNoteRichTextBox);
 			this.NoteInfoGroupBox.Controls.Add(this.DateLabel);
 			this.NoteInfoGroupBox.Controls.Add(this.TextOfNoteLabel);
@@ -62,6 +65,7 @@ namespace Notes.View.Panels
 			// 
 			// TextOfNoteRichTextBox
 			// 
+			this.TextOfNoteRichTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.TextOfNoteRichTextBox.Location = new System.Drawing.Point(11, 109);
 			this.TextOfNoteRichTextBox.Multiline = true;
 			this.TextOfNoteRichTextBox.Name = "TextOfNoteRichTextBox";
@@ -80,6 +84,9 @@ namespace Notes.View.Panels
 			// 
 			// TextOfNoteLabel
 			// 
+			this.TextOfNoteLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.TextOfNoteLabel.AutoSize = true;
 			this.TextOfNoteLabel.Location = new System.Drawing.Point(145, 93);
 			this.TextOfNoteLabel.Name = "TextOfNoteLabel";
@@ -89,6 +96,9 @@ namespace Notes.View.Panels
 			// 
 			// NoteCategoryComboBox
 			// 
+			this.NoteCategoryComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.NoteCategoryComboBox.FormattingEnabled = true;
 			this.NoteCategoryComboBox.Location = new System.Drawing.Point(117, 56);
 			this.NoteCategoryComboBox.Name = "NoteCategoryComboBox";
@@ -98,6 +108,9 @@ namespace Notes.View.Panels
 			// 
 			// NameOfNoteTextBox
 			// 
+			this.NameOfNoteTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.NameOfNoteTextBox.Location = new System.Drawing.Point(117, 20);
 			this.NameOfNoteTextBox.Name = "NameOfNoteTextBox";
 			this.NameOfNoteTextBox.Size = new System.Drawing.Size(219, 20);
@@ -106,6 +119,9 @@ namespace Notes.View.Panels
 			// 
 			// NoteCategoryLabel
 			// 
+			this.NoteCategoryLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.NoteCategoryLabel.AutoSize = true;
 			this.NoteCategoryLabel.Location = new System.Drawing.Point(8, 56);
 			this.NoteCategoryLabel.Name = "NoteCategoryLabel";
@@ -115,6 +131,9 @@ namespace Notes.View.Panels
 			// 
 			// NameOfNoteLabel
 			// 
+			this.NameOfNoteLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.NameOfNoteLabel.AutoSize = true;
 			this.NameOfNoteLabel.Location = new System.Drawing.Point(8, 23);
 			this.NameOfNoteLabel.Name = "NameOfNoteLabel";
@@ -133,6 +152,7 @@ namespace Notes.View.Panels
 			// 
 			// NotesListBox
 			// 
+			this.NotesListBox.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.NotesListBox.FormattingEnabled = true;
 			this.NotesListBox.Location = new System.Drawing.Point(12, 33);
 			this.NotesListBox.Name = "NotesListBox";
@@ -143,6 +163,7 @@ namespace Notes.View.Panels
 			// 
 			// DeleteNoteButton
 			// 
+			this.DeleteNoteButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
 			this.DeleteNoteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.DeleteNoteButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
 			this.DeleteNoteButton.Image = global::Notes.Properties.Resources.Note_Remove_Uncolor;
@@ -157,6 +178,7 @@ namespace Notes.View.Panels
 			// 
 			// AddNoteButton
 			// 
+			this.AddNoteButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
 			this.AddNoteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.AddNoteButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
 			this.AddNoteButton.Image = global::Notes.Properties.Resources.Note_Add_Uncolor_;
@@ -174,6 +196,7 @@ namespace Notes.View.Panels
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoSize = true;
+			this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.BackColor = System.Drawing.SystemColors.ControlLightLight;
 			this.Controls.Add(this.DeleteNoteButton);
 			this.Controls.Add(this.AddNoteButton);

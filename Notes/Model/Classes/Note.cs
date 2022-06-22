@@ -15,7 +15,7 @@ namespace Notes.Model.Classes
 		/// <summary>
 		/// Уникальный Id - номер заметки.
 		/// </summary>
-		public int Id { get; set; }
+		private int _id { get; set; }
 
 		/// <summary>
 		/// Название заметки.
@@ -49,6 +49,18 @@ namespace Notes.Model.Classes
 			private set
 			{
 				AllNotesCount = value;
+			}
+		}
+
+		public int Id
+		{
+			get
+			{
+				return _id;
+			}
+			private set
+			{
+				_id = value;
 			}
 		}
 
