@@ -35,14 +35,14 @@ namespace Notes
 			// 
 			// notesControl1
 			// 
-			this.notesControl1.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.notesControl1.AutoSize = true;
 			this.notesControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.notesControl1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-			this.notesControl1.Location = new System.Drawing.Point(12, 3);
+			this.notesControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.notesControl1.Location = new System.Drawing.Point(0, 0);
 			this.notesControl1.MinimumSize = new System.Drawing.Size(603, 510);
 			this.notesControl1.Name = "notesControl1";
-			this.notesControl1.Size = new System.Drawing.Size(603, 510);
+			this.notesControl1.Size = new System.Drawing.Size(615, 521);
 			this.notesControl1.TabIndex = 0;
 			// 
 			// MainForm

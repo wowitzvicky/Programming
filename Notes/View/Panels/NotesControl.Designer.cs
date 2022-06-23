@@ -56,28 +56,32 @@ namespace Notes.View.Panels
 			this.NoteInfoGroupBox.Controls.Add(this.NameOfNoteTextBox);
 			this.NoteInfoGroupBox.Controls.Add(this.NoteCategoryLabel);
 			this.NoteInfoGroupBox.Controls.Add(this.NameOfNoteLabel);
-			this.NoteInfoGroupBox.Location = new System.Drawing.Point(248, 33);
+			this.NoteInfoGroupBox.Location = new System.Drawing.Point(241, 9);
 			this.NoteInfoGroupBox.Name = "NoteInfoGroupBox";
-			this.NoteInfoGroupBox.Size = new System.Drawing.Size(342, 458);
+			this.NoteInfoGroupBox.Size = new System.Drawing.Size(342, 468);
 			this.NoteInfoGroupBox.TabIndex = 7;
 			this.NoteInfoGroupBox.TabStop = false;
 			this.NoteInfoGroupBox.Text = "Информация о заметке";
 			// 
 			// TextOfNoteRichTextBox
 			// 
-			this.TextOfNoteRichTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.TextOfNoteRichTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.TextOfNoteRichTextBox.Location = new System.Drawing.Point(11, 109);
 			this.TextOfNoteRichTextBox.Multiline = true;
 			this.TextOfNoteRichTextBox.Name = "TextOfNoteRichTextBox";
 			this.TextOfNoteRichTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.TextOfNoteRichTextBox.Size = new System.Drawing.Size(325, 335);
+			this.TextOfNoteRichTextBox.Size = new System.Drawing.Size(325, 322);
 			this.TextOfNoteRichTextBox.TabIndex = 7;
 			this.TextOfNoteRichTextBox.TextChanged += new System.EventHandler(this.TextOfNoteRichTextBox_TextChanged);
 			// 
 			// DateLabel
 			// 
+			this.DateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.DateLabel.AutoSize = true;
-			this.DateLabel.Location = new System.Drawing.Point(8, 415);
+			this.DateLabel.Location = new System.Drawing.Point(6, 443);
 			this.DateLabel.Name = "DateLabel";
 			this.DateLabel.Size = new System.Drawing.Size(0, 13);
 			this.DateLabel.TabIndex = 6;
@@ -152,7 +156,8 @@ namespace Notes.View.Panels
 			// 
 			// NotesListBox
 			// 
-			this.NotesListBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.NotesListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
 			this.NotesListBox.FormattingEnabled = true;
 			this.NotesListBox.Location = new System.Drawing.Point(12, 33);
 			this.NotesListBox.Name = "NotesListBox";
@@ -163,7 +168,7 @@ namespace Notes.View.Panels
 			// 
 			// DeleteNoteButton
 			// 
-			this.DeleteNoteButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+			this.DeleteNoteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.DeleteNoteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.DeleteNoteButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
 			this.DeleteNoteButton.Image = global::Notes.Properties.Resources.Note_Remove_Uncolor;
@@ -178,7 +183,7 @@ namespace Notes.View.Panels
 			// 
 			// AddNoteButton
 			// 
-			this.AddNoteButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+			this.AddNoteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.AddNoteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.AddNoteButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
 			this.AddNoteButton.Image = global::Notes.Properties.Resources.Note_Add_Uncolor_;

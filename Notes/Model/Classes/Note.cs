@@ -11,32 +11,26 @@ namespace Notes.Model.Classes
 		/// Количество уже созданных когда-либо заметок.
 		/// </summary>
 		public static int AllNotesCount=0;
-
 		/// <summary>
 		/// Уникальный Id - номер заметки.
 		/// </summary>
 		private int _id { get; set; }
-
 		/// <summary>
 		/// Название заметки.
 		/// </summary>
-		public string _name { get; set; }
-
+		public string Name { get; set; }
 		/// <summary>
 		/// Текст заметки.
 		/// </summary>
-		public string _text { get; set; }
-
+		public string Text { get; set; }
 		/// <summary>
 		/// Категория заметки.
 		/// </summary>
-		public string _category { get; set; }
-		
+		public string Category { get; set; }
 		/// <summary>
 		/// Дата создания заметки.
 		/// </summary>
-		readonly public DateTime  _addTime;
-
+	    public DateTime  AddTime;
 		/// <summary>
 		/// Возвращает либо увеличивает кол-во уже созданных заметок.
 	    // </summary>
@@ -51,7 +45,6 @@ namespace Notes.Model.Classes
 				AllNotesCount = value;
 			}
 		}
-
 		public int Id
 		{
 			get
@@ -63,50 +56,47 @@ namespace Notes.Model.Classes
 				_id = value;
 			}
 		}
-
 		/// <summary>
 		/// Возвращает или задает название заметки.
 		/// </summary>
-		public string Name
+		public string NotesName
 		{
 			get
 			{
-				return _name;
+				return Name;
 			}
 			private set
 			{
-				Validator.AssertValueInRange(_name);
-				_name = value;
+				Validator.AssertValueInRange(Name);
+				Name = value;
 			}
 		}
-
 		/// <summary>
 		/// Возвращает или задает текст заметки.
 		/// </summary>
-		public string Text
+		public string NotesText
 		{
 			get
 			{
-				return _text;
+				return Text;
 			}
 			private set
 			{
-				_text = value;
+				Text = value;
 			}
 		}
-
 		/// <summary>
 		/// Возвращает или задает категорию заметки.
 		/// </summary>
-		public string Category
+		public string NotesCategory
 		{
 			get
 			{
-				return _category;
+				return Category;
 			}
 			private set
 			{
-				_text = value;
+				Category = value;
 			}
 		}
 
@@ -125,10 +115,10 @@ namespace Notes.Model.Classes
 		{
 			AllNotesCount++;
 			Id = AllNotesCount;
-			_name = name;
-			_text = text;
-			_category = category;
-			_addTime = DateTime.Now;
+			Name = name;
+			Text = text;
+			Category = category;
+			AddTime = DateTime.Now;
 		}
 
 		/// <summary>
@@ -140,10 +130,10 @@ namespace Notes.Model.Classes
 		public Note(int id,string name, string text, string category)
 		{
 			Id = id;
-			_name = name;
-			_text = text;
-			_category = category;
-			_addTime = DateTime.Now;
+			Name = name;
+			Text = text;
+			Category = category;
+			AddTime = DateTime.Now;
 		}
 
 

@@ -18,9 +18,7 @@ namespace Notes.View.Panels
 	public partial class NotesControl : UserControl
 	{
 		private static bool to_change = false;
-
 		ProjectSerializer Serializer = new ProjectSerializer();
-		
 		public NotesControl()
 		{
 			InitializeComponent();
@@ -29,17 +27,14 @@ namespace Notes.View.Panels
 			PrintNotesList();
 			NoteCategoryComboBox.DataSource = Enum.GetValues(typeof(Category));
 		}
-
 		/// <summary>
 		/// Хранит данные о текущей заметке.
 		/// </summary>
 		private Note _currentNote = new Note();
-
 		/// <summary>
 		/// Список заметок.
 		/// </summary>
 		private List<Note> _notes = new List<Note>();
-
 		/// <summary>
 		/// Строковый вывод информации о заметке.
 		/// </summary>
@@ -47,9 +42,8 @@ namespace Notes.View.Panels
 		/// <returns>Возвращает строковое представление о заметке.</returns>
 		private string GetNoteInfo(Note note)
 		{
-			return $"{note.Name} ";
+			return $"{note.NotesName} ";
 		}
-
 		/// <summary>
 		/// Сортирует список заметок.
 		/// </summary>
@@ -60,7 +54,7 @@ namespace Notes.View.Panels
 			{
 				for (int j = 0; j < _notes.Count - 1; j++)
 				{
-					if (_notes[j]._addTime < _notes[j + 1]._addTime)
+					if (_notes[j].AddTime< _notes[j + 1].AddTime)
 					{
 						temp = _notes[j];
 						_notes[j] = _notes[j + 1];
@@ -86,19 +80,17 @@ namespace Notes.View.Panels
 				Serializer.SaveToFile(_notes);
 			}
 		}
-
 		/// <summary>
 		/// Обновляет информацию о выбранной заметке.
 		/// </summary>
 		/// <param name="note">Заметка.</param>
 		private void UpdateNoteInfo(Note note)
 		{
-			NameOfNoteTextBox.Text = "" + note.Name;
-			TextOfNoteRichTextBox.Text = "" + note.Text;
-			DateLabel.Text = "Время создания : " + note._addTime;
-			NoteCategoryComboBox.Text = note.Category;
+			NameOfNoteTextBox.Text = "" + note.NotesName;
+			TextOfNoteRichTextBox.Text = "" + note.NotesText;
+			DateLabel.Text = "Время создания : " + note.AddTime;
+			NoteCategoryComboBox.Text = note.NotesCategory;
 		}
-
 		/// <summary>
 		/// Очищает вывод информации о заметке.
 		/// </summary>
@@ -109,11 +101,9 @@ namespace Notes.View.Panels
 			DateLabel.Text = "";
 			NoteCategoryComboBox.Text = "";
 		}
-
 		private void AddNoteButton_Click(object sender, EventArgs e)
 		{
 			int index = _notes.Count;
-
 			if (index == 0)
 			{
 
@@ -130,21 +120,18 @@ namespace Notes.View.Panels
 			ClearNoteInfo();
 			NotesListBox.SelectedIndex = -1;
 		}
-
 		private void TurnOnChanges()
 		{
 			this.TextOfNoteRichTextBox.TextChanged += this.TextOfNoteRichTextBox_TextChanged;
 			this.NoteCategoryComboBox.SelectedValueChanged += this.NoteCategoryComboBox_SelectedValueChanged;
 			this.NameOfNoteTextBox.TextChanged += this.NameOfNoteTextBox_TextChanged;
 		}
-
 		private void TurnOffChanges()
 		{
 			this.TextOfNoteRichTextBox.TextChanged -= this.TextOfNoteRichTextBox_TextChanged;
 			this.NoteCategoryComboBox.SelectedValueChanged -= this.NoteCategoryComboBox_SelectedValueChanged;
 			this.NameOfNoteTextBox.TextChanged -= this.NameOfNoteTextBox_TextChanged;
 		}
-
 		private void NotesListBox_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (NotesListBox.SelectedIndex != -1)
@@ -154,7 +141,6 @@ namespace Notes.View.Panels
 				TurnOnChanges();
 			}
 		}
-
 		private void DeleteNoteButton_Click(object sender, EventArgs e)
 		{
 			if (_notes.Count > 0 && NotesListBox.SelectedIndex != -1)
@@ -166,27 +152,22 @@ namespace Notes.View.Panels
 				ClearNoteInfo();
 			}
 		}
-
 		private void AddNoteButton_MouseMove(object sender, MouseEventArgs e)
 		{
 			AddNoteButton.Image = Resource.Note_Add_Color24x24;
 		}
-
 		private void AddNoteButton_MouseLeave(object sender, EventArgs e)
 		{
 			AddNoteButton.Image = Resource.Note_Add_Uncolor;
 		}
-
 		private void DeleteNoteButton_MouseMove(object sender, MouseEventArgs e)
 		{
 			DeleteNoteButton.Image = Resource.Note_Remove_Color;
 		}
-
 		private void DeleteNoteButton_MouseLeave(object sender, EventArgs e)
 		{
 			DeleteNoteButton.Image = Resource.Note_Remove_Uncolor;
 		}
-
 		private void NameOfNoteTextBox_TextChanged(object sender, EventArgs e)
 		{
 			int index = NotesListBox.SelectedIndex;
@@ -199,7 +180,7 @@ namespace Notes.View.Panels
 				if (_notes[index].Text != NameOfNoteTextBox.Text)
 				{
 					int id = _notes[NotesListBox.SelectedIndex].Id;
-					Note note = new Note(id, NameOfNoteTextBox.Text, _notes[index].Text, _notes[index].Category);
+					Note note = new Note(id, NameOfNoteTextBox.Text, _notes[index].NotesText, _notes[index].NotesCategory);
 					_currentNote = note;
 					_notes[index] = _currentNote;
 					UpdateNoteInfo(_currentNote);
@@ -208,7 +189,6 @@ namespace Notes.View.Panels
 			}
 
 		}
-
 		private void NoteCategoryComboBox_SelectedValueChanged(object sender, EventArgs e)
 		{
 			int index = NotesListBox.SelectedIndex;
@@ -221,16 +201,14 @@ namespace Notes.View.Panels
 				if (_notes[index].Category != NoteCategoryComboBox.Text)
 				{
 					int id = _notes[NotesListBox.SelectedIndex].Id;
-					Note note = new Note(id, _notes[index].Name, _notes[index].Text, NoteCategoryComboBox.Text);
+					Note note = new Note(id, _notes[index].NotesName, _notes[index].NotesText, NoteCategoryComboBox.Text);
 					_currentNote = note;
 					_notes[index] = _currentNote;
 					UpdateNoteInfo(_currentNote);
 					PrintNotesList();
-
 				}
 			}
 		}
-
 		private void TextOfNoteRichTextBox_TextChanged(object sender, EventArgs e)
 		{
 			int index = NotesListBox.SelectedIndex;
@@ -243,7 +221,7 @@ namespace Notes.View.Panels
 				if (_notes[index].Category != TextOfNoteRichTextBox.Text)
 				{
 					int id = _notes[NotesListBox.SelectedIndex].Id;
-					Note note = new Note(id, _notes[index].Name, TextOfNoteRichTextBox.Text, _notes[index].Category);
+					Note note = new Note(id, _notes[index].NotesName, TextOfNoteRichTextBox.Text, _notes[index].NotesCategory);
 					_currentNote = note;
 					_notes[index] = _currentNote;
 					UpdateNoteInfo(_currentNote);
@@ -251,7 +229,6 @@ namespace Notes.View.Panels
 				}
 			}
 		}
-
 		private void NotesListBox_MouseDoubleClick(object sender, MouseEventArgs e)
 		{
 			NotesListBox.SelectedIndex = -1;

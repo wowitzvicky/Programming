@@ -12,7 +12,6 @@ namespace Notes.Model.Classes
 		/// Полный путь к файлу.
 		/// </summary>
 		public string Filename { get; set; }
-
 		/// <summary>
 		/// Инициализирует сериализацию.
 		/// </summary>
@@ -27,7 +26,6 @@ namespace Notes.Model.Classes
 			}
 			Filename += "save.json";
 		}
-
 		/// <summary>
 		/// Сохраняет в файл список экземпляров класса <see cref="Note"/>
 		/// </summary>
@@ -50,13 +48,13 @@ namespace Notes.Model.Classes
 			var note = new List<Note>();
 			if (File.Exists(Filename))
 			{
-			JsonSerializer serializer = new JsonSerializer();
-			using (StreamReader sr = new StreamReader(Filename))
-			using (JsonReader reader = new JsonTextReader(sr))
-			{
-				var test = serializer.Deserialize<JArray>(reader);
-				note = test.ToObject<List<Note>>();
-			}
+				JsonSerializer serializer = new JsonSerializer();
+				using (StreamReader sr = new StreamReader(Filename))
+			    using (JsonReader reader = new JsonTextReader(sr))
+				{
+					var test = serializer.Deserialize<JArray>(reader);
+					note = test.ToObject<List<Note>>();
+				}
 			}
 			return note;
 		}
