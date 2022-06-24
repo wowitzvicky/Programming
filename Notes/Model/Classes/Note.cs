@@ -11,26 +11,32 @@ namespace Notes.Model.Classes
 		/// Количество уже созданных когда-либо заметок.
 		/// </summary>
 		public static int AllNotesCount=0;
+		
 		/// <summary>
 		/// Уникальный Id - номер заметки.
 		/// </summary>
 		private int _id { get; set; }
+		
 		/// <summary>
 		/// Название заметки.
 		/// </summary>
 		public string Name { get; set; }
+		
 		/// <summary>
 		/// Текст заметки.
 		/// </summary>
 		public string Text { get; set; }
+		
 		/// <summary>
 		/// Категория заметки.
 		/// </summary>
 		public string Category { get; set; }
+		
 		/// <summary>
 		/// Дата создания заметки.
 		/// </summary>
 	    public DateTime  AddTime;
+		
 		/// <summary>
 		/// Возвращает либо увеличивает кол-во уже созданных заметок.
 	    // </summary>
@@ -45,6 +51,7 @@ namespace Notes.Model.Classes
 				AllNotesCount = value;
 			}
 		}
+		
 		public int Id
 		{
 			get
@@ -56,6 +63,7 @@ namespace Notes.Model.Classes
 				_id = value;
 			}
 		}
+		
 		/// <summary>
 		/// Возвращает или задает название заметки.
 		/// </summary>
@@ -71,6 +79,7 @@ namespace Notes.Model.Classes
 				Name = value;
 			}
 		}
+		
 		/// <summary>
 		/// Возвращает или задает текст заметки.
 		/// </summary>
@@ -85,6 +94,7 @@ namespace Notes.Model.Classes
 				Text = value;
 			}
 		}
+		
 		/// <summary>
 		/// Возвращает или задает категорию заметки.
 		/// </summary>
@@ -135,7 +145,5 @@ namespace Notes.Model.Classes
 			Category = category;
 			AddTime = DateTime.Now;
 		}
-
-
 	}
 }

@@ -12,6 +12,7 @@ namespace Notes.Model.Classes
 		/// Полный путь к файлу.
 		/// </summary>
 		public string Filename { get; set; }
+		
 		/// <summary>
 		/// Инициализирует сериализацию.
 		/// </summary>
@@ -26,6 +27,7 @@ namespace Notes.Model.Classes
 			}
 			Filename += "save.json";
 		}
+		
 		/// <summary>
 		/// Сохраняет в файл список экземпляров класса <see cref="Note"/>
 		/// </summary>
@@ -39,6 +41,7 @@ namespace Notes.Model.Classes
 				serializer.Serialize(writer, note);
 			}
 		}
+		
 		/// <summary>
 		/// Загружает из файла список экземпляров класса <see cref="Note"/>
 		/// </summary>
