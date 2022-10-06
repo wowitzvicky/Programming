@@ -42,7 +42,7 @@ namespace ObjectsOrientedPractics.Tabs
             this.CostLabel = new System.Windows.Forms.Label();
             this.NameLabel = new System.Windows.Forms.Label();
             this.NameTextBox = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.DescriptionTextBox = new System.Windows.Forms.TextBox();
             this.DescriptionLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -72,6 +72,7 @@ namespace ObjectsOrientedPractics.Tabs
             this.AddButton.TabIndex = 2;
             this.AddButton.Text = "Add";
             this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // RemoveButton
             // 
@@ -81,6 +82,7 @@ namespace ObjectsOrientedPractics.Tabs
             this.RemoveButton.TabIndex = 3;
             this.RemoveButton.Text = "Remove";
             this.RemoveButton.UseVisualStyleBackColor = true;
+            this.RemoveButton.Click += new System.EventHandler(this.RemoveButton_Click);
             // 
             // IdTextBox
             // 
@@ -95,6 +97,7 @@ namespace ObjectsOrientedPractics.Tabs
             this.CostTextBox.Name = "CostTextBox";
             this.CostTextBox.Size = new System.Drawing.Size(108, 22);
             this.CostTextBox.TabIndex = 5;
+            this.CostTextBox.TextChanged += new System.EventHandler(this.CostTextBox_TextChanged);
             // 
             // IdLabel
             // 
@@ -132,21 +135,22 @@ namespace ObjectsOrientedPractics.Tabs
             // 
             // NameTextBox
             // 
-            this.NameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.NameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.NameTextBox.Location = new System.Drawing.Point(291, 117);
             this.NameTextBox.Multiline = true;
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.Size = new System.Drawing.Size(420, 89);
             this.NameTextBox.TabIndex = 10;
+            this.NameTextBox.TextChanged += new System.EventHandler(this.NameTextBox_TextChanged);
             // 
-            // textBox1
+            // DescriptionTextBox
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(291, 232);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(420, 130);
-            this.textBox1.TabIndex = 11;
+            this.DescriptionTextBox.Location = new System.Drawing.Point(291, 232);
+            this.DescriptionTextBox.Multiline = true;
+            this.DescriptionTextBox.Name = "DescriptionTextBox";
+            this.DescriptionTextBox.Size = new System.Drawing.Size(420, 130);
+            this.DescriptionTextBox.TabIndex = 11;
+            this.DescriptionTextBox.TextChanged += new System.EventHandler(this.DescriptionTextBox_TextChanged);
             // 
             // DescriptionLabel
             // 
@@ -161,7 +165,7 @@ namespace ObjectsOrientedPractics.Tabs
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.DescriptionLabel);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.DescriptionTextBox);
             this.Controls.Add(this.NameTextBox);
             this.Controls.Add(this.NameLabel);
             this.Controls.Add(this.CostLabel);
@@ -183,7 +187,7 @@ namespace ObjectsOrientedPractics.Tabs
 
         private System.Windows.Forms.TextBox NameTextBox;
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox DescriptionTextBox;
 
         private System.Windows.Forms.Label NameLabel;
 
