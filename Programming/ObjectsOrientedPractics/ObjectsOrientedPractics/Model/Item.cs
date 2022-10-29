@@ -26,6 +26,11 @@ namespace ObjectsOrientedPractics.Model
         /// Возвращает идентификатор товара.
         /// </summary>
         public int Id { get; }
+        
+        /// <summary>
+        /// Возвращает или задаёт категорию товара.
+        /// </summary>
+        public Category Category { get; set; }
 
         /// <summary>
         /// Возвращает или задаёт значение имени. Длина строки не должна превышать 200./>
@@ -72,12 +77,14 @@ namespace ObjectsOrientedPractics.Model
         /// <param name="name">Название товара.</param>
         /// <param name="info">Информация о товаре.</param>
         /// <param name="cost">Цена товара.</param>
-        public Item(string name, string info, double cost)
+        /// <param name="category">Категория товара.</param>
+        public Item(string name, string info, double cost, Category category)
         {
             Id = IdGenerator.GetNextId();
             Name = name;
             Info = info;
             Cost = cost;
+            Category = category;
         }
 
         public Item()
@@ -87,7 +94,7 @@ namespace ObjectsOrientedPractics.Model
 
         public override string ToString()
         {
-            return $"{nameof(Item)}-{Id + 1}";
+            return $"{nameof(Item)}-{Id}";
         }
     }
 }

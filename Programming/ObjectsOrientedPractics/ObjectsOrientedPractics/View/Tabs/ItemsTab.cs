@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using ObjectsOrientedPractics.Model;
 
 namespace ObjectsOrientedPractics.Tabs
@@ -9,7 +10,6 @@ namespace ObjectsOrientedPractics.Tabs
     public partial class ItemsTab : UserControl
     {
         private static readonly Color ColorSuccess = Color.White;
-
         private static readonly Color ColorError = Color.LightPink;
         
         private List<Item> _items = new List<Item>();
@@ -19,14 +19,24 @@ namespace ObjectsOrientedPractics.Tabs
         public ItemsTab()
         {
             InitializeComponent();
+
+            Item[] items = new Item[5];
+            
+            for(int i = 0; i < 5; i++)
+            {
+                items[i] = new Item();
+                ItemsListBox.Items.Add(items[i]);
+            }
+            
+            CategoryComboBox.Sorted = true;
+            CategoryComboBox.DataSource = Enum.GetValues(typeof(Category));
         }
         
         private void CostTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                var text = CostTextBox.Text;
-                var cost = double.Parse(text);
+                var cost = double.Parse(CostTextBox.Text);
 
                 _currentItem.Cost = cost;
                 CostTextBox.BackColor = ColorSuccess;
@@ -42,9 +52,7 @@ namespace ObjectsOrientedPractics.Tabs
         {
             try
             {
-                var text = NameTextBox.Text;
-                _currentItem.Name = text;
-
+                _currentItem.Name = NameTextBox.Text;
                 NameTextBox.BackColor = ColorSuccess;
             }
             catch (Exception exception)
@@ -59,8 +67,7 @@ namespace ObjectsOrientedPractics.Tabs
         {
             try
             {
-                var text = DescriptionTextBox.Text;
-                _currentItem.Info = text;
+                _currentItem.Info = DescriptionTextBox.Text;
 
                 DescriptionTextBox.BackColor = ColorSuccess;
             }
@@ -96,6 +103,7 @@ namespace ObjectsOrientedPractics.Tabs
             NameTextBox.Clear();
             DescriptionTextBox.Clear();
             CostTextBox.Clear();
+            CategoryComboBox.SelectedIndex = -1;
         }
 
         private void RemoveButton_Click(object sender, EventArgs e)
@@ -103,7 +111,50 @@ namespace ObjectsOrientedPractics.Tabs
             _items.Remove(_currentItem);
             UpdateItemsListBox();
             ClearAllTextBoxes();
-            _currentItem = new Item();
+        }
+
+        private void PrintItemsTextBox()
+        {
+            if (ItemsListBox.SelectedItem is Item temp)
+            {
+                _currentItem = temp;
+                NameTextBox.Text = "" + _currentItem.Name;
+                CostTextBox.Text = "" + _currentItem.Cost;
+                DescriptionTextBox.Text = "" + _currentItem.Info;
+                IdTextBox.Text = "" + _currentItem.Id;
+                CategoryComboBox.SelectedItem = "" + _currentItem.Category;
+            }
+        }
+        
+        private void ItemsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PrintItemsTextBox();
+            var selectedItem = (Item) ItemsListBox.SelectedItem;
+            _currentItem = selectedItem;
+        }
+
+        private void NameTextBox_Leave(object sender, EventArgs e)
+        {
+            int index = ItemsListBox.SelectedIndex;
+            ItemsListBox.Items.RemoveAt(index);
+            ItemsListBox.Items.Insert(index, NameTextBox.Text);
+            ItemsListBox.SelectedIndex = index;
+        }
+
+        private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CategoryComboBox.SelectedIndex == -1) return;
+                var category = (Category) CategoryComboBox.SelectedItem;
+                _currentItem.Category = category;
+                CategoryComboBox.BackColor = ColorSuccess;
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                CategoryComboBox.BackColor = ColorError;
+            }
         }
     }
 }    
