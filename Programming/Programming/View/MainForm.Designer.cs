@@ -141,6 +141,7 @@
 	        // rectanglesCollisionControl1
 	        // 
 	        this.rectanglesCollisionControl1.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+	        this.rectanglesCollisionControl1.BackColor = System.Drawing.SystemColors.ControlLightLight;
 	        this.rectanglesCollisionControl1.Location = new System.Drawing.Point(3, 2);
 	        this.rectanglesCollisionControl1.Margin = new System.Windows.Forms.Padding(5);
 	        this.rectanglesCollisionControl1.Name = "rectanglesCollisionControl1";
@@ -187,9 +188,9 @@
 		#endregion
 
 		private Programming.View.Panels.RectanglesCollisionControl rectanglesCollisionControl1;
-		private Panels.RectanglesControl rectangles1;
+		private Programming.View.Panels.RectanglesControl rectangles1;
 		private Panels.MoviesControl movies1;
-		private Panels.WeekdayParsingControl parsing1;
+		private Programming.View.Panels.WeekdayParsingControl parsing1;
 		private Panels.SeasonHandleControl seasonHandle1;
 		private Panels.EnumerationsControl enumerations1;
 	}

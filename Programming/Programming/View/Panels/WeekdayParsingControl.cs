@@ -12,13 +12,12 @@ namespace Programming.View.Panels
 		{
 			InitializeComponent();
 		}
-
         private void ParseButton_Click(object sender, EventArgs e)
         {
             Weekday value;
             if (Enum.TryParse(ParseTextBox.Text, out value))
             {
-                ParseInfoLabel.Text = $"\"Это день недели ({ParseTextBox.Text} = {(int)value+1})\"";
+                ParseInfoLabel.Text = $"Это день недели ({ParseTextBox.Text} = {(int)value+1})";
             }
             else
             {

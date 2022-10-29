@@ -23,9 +23,9 @@ namespace Programming.View.Panels
 
 		#region Код, автоматически созданный конструктором компонентов
 
-		/// <summary> 
-		/// Требуемый метод для поддержки конструктора — не изменяйте 
-		/// содержимое этого метода с помощью редактора кода.
+		/// <summary>
+		/// Required method for Designer support - do not modify
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
@@ -43,38 +43,36 @@ namespace Programming.View.Panels
 			this.WeekdayParsingGroupBox.Controls.Add(this.InfoLabel);
 			this.WeekdayParsingGroupBox.Controls.Add(this.ParseButton);
 			this.WeekdayParsingGroupBox.Controls.Add(this.ParseTextBox);
-			this.WeekdayParsingGroupBox.Location = new System.Drawing.Point(2, 2);
-			this.WeekdayParsingGroupBox.Margin = new System.Windows.Forms.Padding(2);
+			this.WeekdayParsingGroupBox.Location = new System.Drawing.Point(3, 2);
+			this.WeekdayParsingGroupBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.WeekdayParsingGroupBox.Name = "WeekdayParsingGroupBox";
-			this.WeekdayParsingGroupBox.Padding = new System.Windows.Forms.Padding(2);
-			this.WeekdayParsingGroupBox.Size = new System.Drawing.Size(320, 117);
+			this.WeekdayParsingGroupBox.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+			this.WeekdayParsingGroupBox.Size = new System.Drawing.Size(427, 144);
 			this.WeekdayParsingGroupBox.TabIndex = 11;
 			this.WeekdayParsingGroupBox.TabStop = false;
 			this.WeekdayParsingGroupBox.Text = "Weekday Parsing";
 			// 
 			// ParseInfoLabel
 			// 
-			this.ParseInfoLabel.Location = new System.Drawing.Point(4, 58);
-			this.ParseInfoLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+			this.ParseInfoLabel.Location = new System.Drawing.Point(5, 71);
 			this.ParseInfoLabel.Name = "ParseInfoLabel";
-			this.ParseInfoLabel.Size = new System.Drawing.Size(182, 52);
+			this.ParseInfoLabel.Size = new System.Drawing.Size(243, 64);
 			this.ParseInfoLabel.TabIndex = 11;
 			// 
 			// InfoLabel
 			// 
-			this.InfoLabel.Location = new System.Drawing.Point(4, 15);
-			this.InfoLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+			this.InfoLabel.Location = new System.Drawing.Point(6, 20);
 			this.InfoLabel.Name = "InfoLabel";
-			this.InfoLabel.Size = new System.Drawing.Size(122, 18);
+			this.InfoLabel.Size = new System.Drawing.Size(163, 22);
 			this.InfoLabel.TabIndex = 10;
 			this.InfoLabel.Text = "Type value for parsing:";
 			// 
 			// ParseButton
 			// 
-			this.ParseButton.Location = new System.Drawing.Point(130, 36);
-			this.ParseButton.Margin = new System.Windows.Forms.Padding(2);
+			this.ParseButton.Location = new System.Drawing.Point(173, 44);
+			this.ParseButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.ParseButton.Name = "ParseButton";
-			this.ParseButton.Size = new System.Drawing.Size(56, 20);
+			this.ParseButton.Size = new System.Drawing.Size(75, 25);
 			this.ParseButton.TabIndex = 9;
 			this.ParseButton.Text = "Parse";
 			this.ParseButton.UseVisualStyleBackColor = true;
@@ -82,23 +80,23 @@ namespace Programming.View.Panels
 			// 
 			// ParseTextBox
 			// 
-			this.ParseTextBox.Location = new System.Drawing.Point(5, 36);
-			this.ParseTextBox.Margin = new System.Windows.Forms.Padding(2);
+			this.ParseTextBox.Location = new System.Drawing.Point(7, 44);
+			this.ParseTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.ParseTextBox.Name = "ParseTextBox";
-			this.ParseTextBox.Size = new System.Drawing.Size(122, 20);
+			this.ParseTextBox.Size = new System.Drawing.Size(161, 22);
 			this.ParseTextBox.TabIndex = 8;
 			// 
-			// Parsing
+			// WeekdayParsingControl
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.Controls.Add(this.WeekdayParsingGroupBox);
+			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.Name = "WeekdayParsingControl";
-			this.Size = new System.Drawing.Size(326, 122);
+			this.Size = new System.Drawing.Size(435, 150);
 			this.WeekdayParsingGroupBox.ResumeLayout(false);
 			this.WeekdayParsingGroupBox.PerformLayout();
 			this.ResumeLayout(false);
-
 		}
 
 		#endregion
