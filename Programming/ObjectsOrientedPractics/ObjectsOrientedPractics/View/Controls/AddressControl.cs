@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Drawing;
-using System.Collections.Generic;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 using ObjectsOrientedPractics.Model;
 
-namespace ObjectsOrientedPractics.Controls
+namespace ObjectsOrientedPractics.View.Controls
 {
     public partial class AddressControl : UserControl
     {

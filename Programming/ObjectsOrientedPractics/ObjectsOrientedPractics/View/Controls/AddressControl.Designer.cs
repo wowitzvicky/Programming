@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace ObjectsOrientedPractics.Controls
+namespace ObjectsOrientedPractics.View.Controls
 {
     partial class AddressControl
     {
@@ -186,7 +186,6 @@ namespace ObjectsOrientedPractics.Controls
         private System.Windows.Forms.TextBox PostIndexTextBox;
 
         private System.Windows.Forms.Label ApartmentLabel;
-        private System.Windows.Forms.TextBox textBox1;
 
         private System.Windows.Forms.Label StreetLabel;
         private System.Windows.Forms.Label BuildingLabel;
@@ -198,8 +197,6 @@ namespace ObjectsOrientedPractics.Controls
         private System.Windows.Forms.Label PostIndexLabel;
 
         private System.Windows.Forms.Label DeliveryAddressLabel;
-
-        private System.Windows.Forms.Label label1;
 
         #endregion
     }

@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
+using ObjectsOrientedPractics.View.Controls;
 
-namespace ObjectsOrientedPractics.Tabs
+namespace ObjectsOrientedPractics.View.Tabs
 {
     partial class CustomersTab
     {
@@ -31,7 +32,7 @@ namespace ObjectsOrientedPractics.Tabs
         /// </summary>
         private void InitializeComponent()
         {
-            ObjectsOrientedPractics.Model.Address address1 = new ObjectsOrientedPractics.Model.Address();
+            ObjectsOrientedPractics.Model.Address address = new ObjectsOrientedPractics.Model.Address();
             this.CustomersLabel = new System.Windows.Forms.Label();
             this.CustomersListBox = new System.Windows.Forms.ListBox();
             this.AddCustomerButton = new System.Windows.Forms.Button();
@@ -41,7 +42,7 @@ namespace ObjectsOrientedPractics.Tabs
             this.CustomerNameLabel = new System.Windows.Forms.Label();
             this.CustomerIdTextBox = new System.Windows.Forms.TextBox();
             this.CustomerNameTextBox = new System.Windows.Forms.TextBox();
-            this.addressControl1 = new ObjectsOrientedPractics.Controls.AddressControl();
+            this.AddressControl = new AddressControl();
             this.SuspendLayout();
             // 
             // CustomersLabel
@@ -122,27 +123,28 @@ namespace ObjectsOrientedPractics.Tabs
             this.CustomerNameTextBox.Size = new System.Drawing.Size(108, 22);
             this.CustomerNameTextBox.TabIndex = 12;
             this.CustomerNameTextBox.Leave += new System.EventHandler(this.CustomerNameTextBox_Leave);
+            this.CustomerNameTextBox.TextChanged += new System.EventHandler(this.CustomerNameTextBox_TextChanged);
             // 
-            // addressControl1
+            // AddressControl
             // 
-            address1.Apartment = null;
-            address1.Building = null;
-            address1.City = null;
-            address1.Country = null;
-            address1.Index = 0;
-            address1.Street = null;
-            this.addressControl1.Address = address1;
-            this.addressControl1.Location = new System.Drawing.Point(292, 110);
-            this.addressControl1.Name = "addressControl1";
-            this.addressControl1.Size = new System.Drawing.Size(614, 364);
-            this.addressControl1.TabIndex = 13;
+            address.Apartment = null;
+            address.Building = null;
+            address.City = null;
+            address.Country = null;
+            address.Index = 0;
+            address.Street = null;
+            this.AddressControl.Address = address;
+            this.AddressControl.Location = new System.Drawing.Point(292, 110);
+            this.AddressControl.Name = "AddressControl";
+            this.AddressControl.Size = new System.Drawing.Size(614, 364);
+            this.AddressControl.TabIndex = 13;
             // 
             // CustomersTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.Controls.Add(this.addressControl1);
+            this.Controls.Add(this.AddressControl);
             this.Controls.Add(this.CustomerNameTextBox);
             this.Controls.Add(this.CustomerIdTextBox);
             this.Controls.Add(this.CustomerNameLabel);
@@ -159,7 +161,7 @@ namespace ObjectsOrientedPractics.Tabs
             this.PerformLayout();
         }
 
-        private ObjectsOrientedPractics.Controls.AddressControl addressControl1;
+        private AddressControl AddressControl;
 
         private System.Windows.Forms.TextBox CustomerIdTextBox;
         private System.Windows.Forms.TextBox CustomerNameTextBox;

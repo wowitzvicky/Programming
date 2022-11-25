@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using ObjectsOrientedPractics.Controls;
 using ObjectsOrientedPractics.Model;
-using static System.String;
 
-namespace ObjectsOrientedPractics.Tabs
+namespace ObjectsOrientedPractics.View.Tabs
 {
     public partial class CustomersTab : UserControl
     {
         private static readonly Color ColorSuccess = Color.White;
+        
         private static readonly Color ColorError = Color.LightPink;
 
         private Customer _currentCustomer;
@@ -82,7 +81,7 @@ namespace ObjectsOrientedPractics.Tabs
             CustomerNameTextBox.Clear();
             AddressControl.Clear();
         }
-        
+
         private void RemoveCustomerButton_Click(object sender, EventArgs e)
         {
             Customers.Remove(_currentCustomer);
