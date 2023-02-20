@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace ObjectsOrientedPractics.Tabs
+namespace ObjectsOrientedPractics.View.Tabs
 {
     partial class ItemsTab
     {
@@ -209,7 +209,6 @@ namespace ObjectsOrientedPractics.Tabs
         private System.Windows.Forms.ComboBox CategoryComboBox;
 
         private System.Windows.Forms.Label CategoryLabel;
-        private System.Windows.Forms.ComboBox comboBox1;
 
         private System.Windows.Forms.Label DescriptionLabel;
 
