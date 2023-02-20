@@ -16,6 +16,10 @@ namespace ObjectsOrientedPractics.Services
         /// <exception cref="ArgumentException">Возникает, если длина строки больше максимального значения.</exception>
         public static void AssertStringOnLength(string str, int maxLength, string propertyName)
         {
+            if (str == null)
+            {
+                return;
+            }
             if (str.Length > maxLength)
             {
                 throw new ArgumentException($"{propertyName} length > {maxLength}");

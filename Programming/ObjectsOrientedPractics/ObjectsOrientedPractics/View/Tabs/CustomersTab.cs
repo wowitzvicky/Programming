@@ -10,8 +10,6 @@ namespace ObjectsOrientedPractics.Tabs
 {
     public partial class CustomersTab : UserControl
     {
-        private static readonly Color ColorSuccess = Color.White;
-        private static readonly Color ColorError = Color.LightPink;
 
         private Customer _currentCustomer;
 
@@ -20,14 +18,6 @@ namespace ObjectsOrientedPractics.Tabs
         public CustomersTab()
         {
             InitializeComponent();
-            
-            Customer[] customers = new Customer[5];
-            
-            for(int i = 0; i < 5; i++)
-            {
-                customers[i] = new Customer();
-                CustomersListBox.Items.Add(customers[i]);
-            }
         }
 
         private void CustomerNameTextBox_TextChanged(object sender, EventArgs e)
@@ -35,12 +25,10 @@ namespace ObjectsOrientedPractics.Tabs
             try
             {
                 _currentCustomer.Fullname = CustomerNameTextBox.Text;
-                CustomerNameTextBox.BackColor = ColorSuccess;
             }
             catch (Exception exception)
             {
                 Console.WriteLine(exception);
-                CustomerNameTextBox.BackColor = ColorError;
             }
         }
 
@@ -55,7 +43,7 @@ namespace ObjectsOrientedPractics.Tabs
         {
             CustomerIdTextBox.Text = "" + _currentCustomer.Id;
             CustomerNameTextBox.Text = "" + _currentCustomer.Fullname;
-            AddressControl.Address = _currentCustomer.Address;
+            addressControl.Address = _currentCustomer.Address;
         }
         
         private void AddCustomerButton_Click(object sender, EventArgs e)
@@ -80,7 +68,7 @@ namespace ObjectsOrientedPractics.Tabs
         {
             CustomerIdTextBox.Clear();
             CustomerNameTextBox.Clear();
-            AddressControl.Clear();
+            addressControl.Clear();
         }
         
         private void RemoveCustomerButton_Click(object sender, EventArgs e)
@@ -97,6 +85,18 @@ namespace ObjectsOrientedPractics.Tabs
             CustomersListBox.Items.RemoveAt(index);
             CustomersListBox.Items.Insert(index, CustomerNameTextBox.Text);
             CustomersListBox.SelectedIndex = index;
+        }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // CustomersTab
+            // 
+            this.Name = "CustomersTab";
+            this.Size = new System.Drawing.Size(125, 95);
+            this.ResumeLayout(false);
+
         }
     }
 }
