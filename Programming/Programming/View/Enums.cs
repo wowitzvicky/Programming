@@ -1,7 +1,7 @@
 ﻿namespace Programming.View
 {
     /// <summary>
-    /// Хранит другие перечисления
+    /// Хранит другие перечисления..................
     /// </summary>
     public enum Enums
     {
